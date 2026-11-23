@@ -9,7 +9,8 @@ import {
   X,
   Circle,
 } from "lucide-react";
-import Logo from "../../assets/Images/Logo.webp";
+
+import Logo from "../../assets/images/Logo.webp";
 
 const navLinks = [
   { name: "Home", path: "/" },
