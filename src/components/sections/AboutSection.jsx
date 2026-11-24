@@ -1,7 +1,7 @@
-
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Play, Pause, ArrowUpRight, Crosshair } from "lucide-react";
+
 const VIDEOS = [
   "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795241083/bhavyasharma1.mov",
   "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795241026/fiza2.mp4",
@@ -21,6 +21,19 @@ const reveal = {
   transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
 };
 
+/* Cloudinary helpers: smaller file + first-frame poster */
+const optimize = (url, width = 500) =>
+  url?.includes("/upload/")
+    ? url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`)
+    : url;
+
+const makePoster = (url, width = 500) =>
+  url?.includes("/upload/")
+    ? url
+        .replace("/upload/", `/upload/so_0,f_auto,q_auto,w_${width}/`)
+        .replace(/\.(mp4|mov|webm)$/i, ".jpg")
+    : undefined;
+
 /* Highlight keywords */
 const Highlight = ({ children }) => (
   <span className="relative inline-block font-semibold text-blue-600">
@@ -35,10 +48,38 @@ const Highlight = ({ children }) => (
   </span>
 );
 
-/* Reel video component */
+/* Reel video component (lazy loaded) */
 const ReelVideo = ({ src, number, label, className = "" }) => {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(true);
+  const [inView, setInView] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false); // stays true after first view
+
+  // Detect when this reel is on screen
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+        if (entry.isIntersecting) setShouldLoad(true);
+      },
+      { rootMargin: "200px", threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Play when visible, pause when off screen
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !shouldLoad) return;
+
+    if (inView) video.play().catch(() => {});
+    else video.pause();
+  }, [inView, shouldLoad]);
 
   const toggleVideo = async () => {
     const video = videoRef.current;
@@ -63,12 +104,12 @@ const ReelVideo = ({ src, number, label, className = "" }) => {
     >
       <video
         ref={videoRef}
-        src={src}
-        autoPlay
+        src={shouldLoad ? optimize(src) : undefined}
+        poster={makePoster(src)}
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -239,14 +280,13 @@ const AboutSection = () => {
             {/* Reel wall footer */}
             <div className="mt-3 flex items-center justify-between border-t border-black/15 pt-2.5">
               <div>
-              
                 <p
                   className="mt-1 text-base font-medium tracking-tight sm:text-xl"
                   style={{ fontFamily: "Georgia, serif" }}
                 >
                   Every frame has a purpose.
                 </p>
-              </div>            
+              </div>
             </div>
           </motion.div>
         </div>
@@ -254,4 +294,5 @@ const AboutSection = () => {
     </section>
   );
 };
+
 export default AboutSection;
