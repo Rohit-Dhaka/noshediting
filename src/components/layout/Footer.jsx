@@ -159,7 +159,7 @@ const Footer = () => {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <h2 className="select-none font-[Outfit] whitespace-nowrap text-center text-[clamp(3.5rem,15.5vw,13rem)] font-black leading-[0.82]  text-white">
+            <h2 className="select-none font-[Outfit] whitespace-nowrap text-center text-5xl sm:text-6xl md:text-8xl lg:text-[13rem] font-black leading-[0.82]  text-white">
               Nosh
               <span className="ml-[0.04em]">Infotech</span>
             </h2>
