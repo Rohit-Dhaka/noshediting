@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -17,11 +18,41 @@ import {
   MonitorPlay,
   ArrowDown,
   ArrowUp,
-  MoveUpRight,
   Play,
 } from "lucide-react";
 
 const BLUE = "#2563eb";
+
+/* ================= VIDEO URLS ================= */
+
+const SERVICE_VIDEOS = [
+  {
+    id: "01",
+    title: "UGC VIDEOS",
+    category: "CREATOR CONTENT",
+    src: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795240805/fiza5.mp4",
+  },
+  {
+    id: "02",
+    title: "AI VIDEOS",
+    category: "AI PRODUCTION",
+    src: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795505481/Smart_Business_SKYDOT.mp4",
+  },
+  {
+    id: "03",
+    title: "VIDEO SHOOT",
+    category: "PRODUCTION & FILMING",
+    src: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795505528/KRISHI_UTPAD.mp4",
+  },
+  {
+    id: "04",
+    title: "MOTION GRAPHICS",
+    category: "MOTION & DESIGN",
+    src: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795505516/Video_18_-_Pamar-2.mp4",
+  },
+];
+
+/* ================= SERVICES ================= */
 
 const SERVICES = [
   {
@@ -40,12 +71,6 @@ const SERVICES = [
     format: "9:16 Vertical",
     time: "2–3 days",
     tags: ["Authentic", "Creator-led", "Social-first"],
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=85",
-    imageAlt: "Creator filming lifestyle content",
-    imageLabel: "CREATOR STORIES",
-    imageTitle: "Made to connect.",
-    imageSub: "Authenticity is everything.",
   },
   {
     id: "02",
@@ -63,12 +88,6 @@ const SERVICES = [
     format: "AI / 4K Visuals",
     time: "2–5 days",
     tags: ["AI powered", "Next-gen", "Creative"],
-    image:
-      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1800&q=85",
-    imageAlt: "Futuristic creative digital art",
-    imageLabel: "NEXT GEN VISUALS",
-    imageTitle: "Beyond imagination.",
-    imageSub: "A new kind of storytelling.",
   },
   {
     id: "03",
@@ -86,12 +105,6 @@ const SERVICES = [
     format: "4K / Multi format",
     time: "Scheduled shoot",
     tags: ["Production", "Cinematic", "On-location"],
-    image:
-      "https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1800&q=85",
-    imageAlt: "Professional video camera and filming setup",
-    imageLabel: "ON SET PRODUCTION",
-    imageTitle: "Every frame matters.",
-    imageSub: "Crafted behind the camera.",
   },
   {
     id: "04",
@@ -109,12 +122,6 @@ const SERVICES = [
     format: "2D / 3D Motion",
     time: "2–5 days",
     tags: ["Animation", "Typography", "Visual FX"],
-    image:
-      "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1800&q=85",
-    imageAlt: "Creative digital motion design artwork",
-    imageLabel: "MOTION EXPERIMENTS",
-    imageTitle: "Design that moves.",
-    imageSub: "Motion creates emotion.",
   },
 ];
 
@@ -125,7 +132,7 @@ const getLink = (title) =>
     `Hello Nosh Infotech, I want to discuss ${title}.`,
   )}`;
 
-/* ================= ANIMATIONS ================= */
+/* ================= TEXT ANIMATIONS ================= */
 
 const textVariants = {
   enter: (direction) => ({
@@ -145,152 +152,121 @@ const textVariants = {
   }),
 };
 
-const imageVariants = {
-  enter: (direction) => ({
-    opacity: 0,
-    scale: 1.08,
-    x: direction > 0 ? 50 : -50,
-    filter: "blur(10px)",
-  }),
-  center: {
-    opacity: 1,
-    scale: 1,
-    x: 0,
-    filter: "blur(0px)",
-  },
-  exit: (direction) => ({
-    opacity: 0,
-    scale: 0.96,
-    x: direction > 0 ? -35 : 35,
-    filter: "blur(8px)",
-  }),
-};
+/* ================= SINGLE VIDEO VISUAL ================= */
 
-/* ================= CINEMATIC VISUAL ================= */
-
-const ServiceVisual = ({ service }) => {
+const ServiceVisual = ({ service, activeIndex }) => {
   const Icon = service.Icon;
+  const video = SERVICE_VIDEOS[activeIndex];
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#06101f]">
-      {/* Background Image */}
-      <motion.img
-        src={service.image}
-        alt={service.imageAlt}
-        initial={{ scale: 1.12 }}
-        animate={{ scale: 1.04 }}
-        transition={{ duration: 8, ease: "linear" }}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute -left-20 top-1/3 z-10 h-72 w-72 rounded-full bg-blue-500/20 blur-[110px]" />
 
-      {/* Cinematic Color Layers */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/50 via-transparent to-[#020712]/90" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/60 via-transparent to-blue-500/10" />
-
-      {/* Animated Glow */}
-      <motion.div
-        animate={{
-          opacity: [0.2, 0.5, 0.2],
-          x: [0, 40, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -left-20 top-1/3 h-72 w-72 rounded-full bg-blue-500/40 blur-[110px]"
-      />
-
-      {/* Moving Scan Light */}
-      <motion.div
-        initial={{ y: "-100%" }}
-        animate={{ y: "400%" }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-        className="absolute left-0 right-0 z-10 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent"
-      />
-
-      {/* Top Label */}
-      <div className="absolute left-3 right-3 top-3 z-20 flex items-center justify-between sm:left-5 sm:right-5 sm:top-5">
-        <div className="flex items-center gap-2 rounded-full border border-white/15 bg-black/30 px-2.5 py-1.5 backdrop-blur-xl sm:px-4 sm:py-2">
-          <motion.span
-            animate={{ opacity: [1, 0.3, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity }}
-            className="h-1.5 w-1.5 rounded-full bg-blue-400"
+      {/* Single Active Video */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={video.id}
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0"
+        >
+          <video
+            key={video.src}
+            src={video.src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
           />
-          <span className="font-mono text-[7px] tracking-[0.15em] text-white/85 sm:text-[9px] sm:tracking-[0.2em]">
-            {service.imageLabel}
-          </span>
-        </div>
 
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-xl sm:h-10 sm:w-10">
-          <Icon size={15} />
-        </div>
-      </div>
+          {/* Cinematic Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/50 via-transparent to-[#020712]/90" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/50 via-transparent to-blue-500/10" />
 
-      {/* Floating Glass Info - desktop */}
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-5 top-1/2 z-20 hidden -translate-y-1/2 sm:block"
-      >
-        <div className="rounded-xl border border-white/15 bg-[#071426]/50 px-4 py-3 backdrop-blur-xl">
-          <p className="font-mono text-[8px] tracking-[0.18em] text-blue-300">
-            CREATIVE DIRECTION
-          </p>
-          <p className="mt-1 text-xs font-semibold text-white">
-            {service.tags[0]}
-          </p>
-          <div className="mt-2 flex gap-1">
-            {service.tags.map((tag, i) => (
-              <span
-                key={tag}
-                className={`h-1 rounded-full ${
-                  i === 0 ? "w-5 bg-blue-500" : "w-2 bg-white/30"
-                }`}
+          {/* Scan Light */}
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: "400%" }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute left-0 right-0 z-10 h-px bg-gradient-to-r from-transparent via-blue-300/50 to-transparent"
+          />
+
+          {/* Top Label */}
+          <div className="absolute left-3 right-3 top-3 z-20 flex items-center justify-between sm:left-5 sm:right-5 sm:top-5">
+            <div className="flex items-center gap-2 rounded-full border border-white/15 bg-black/30 px-2.5 py-1.5 backdrop-blur-xl sm:px-4 sm:py-2">
+              <motion.span
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 1.8, repeat: Infinity }}
+                className="h-1.5 w-1.5 rounded-full bg-blue-400"
               />
-            ))}
+
+              <span className="font-mono text-[7px] tracking-[0.15em] text-white/85 sm:text-[9px] sm:tracking-[0.2em]">
+                {video.category}
+              </span>
+            </div>
+
+            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-xl sm:h-10 sm:w-10">
+              <Icon size={15} />
+            </div>
           </div>
-        </div>
-      </motion.div>
 
-      {/* Right Vertical Text */}
-      <div className="absolute right-3 top-1/2 z-20 hidden -translate-y-1/2 rotate-90 sm:right-5 sm:block">
-        <span className="font-mono text-[8px] tracking-[0.25em] text-white/50">
-          NOSH CREATIVE STUDIO — 2026
-        </span>
-      </div>
-
-      {/* Bottom Typography */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-3 sm:p-5 lg:p-7">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="h-px w-5 bg-blue-400 sm:w-8" />
-          <span className="font-mono text-[7px] tracking-[0.2em] text-blue-200 sm:text-[9px]">
-            {service.category}
-          </span>
-        </div>
-
-        <h3 className="max-w-[95%] font-[Outfit] text-[clamp(1.5rem,5vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-white sm:max-w-[85%] sm:text-5xl lg:text-6xl">
-          {service.imageTitle}
-        </h3>
-
-        <p className="mt-1.5 text-[9px] tracking-wide text-white/65 sm:mt-2 sm:text-sm">
-          {service.imageSub}
-        </p>
-
-        <div className="mt-2.5 flex items-center justify-between border-t border-white/15 pt-2 sm:mt-4 sm:pt-3">
-          <span className="font-mono text-[7px] tracking-[0.15em] text-white/50 sm:text-[9px]">
-            VISUAL STORYTELLING
-          </span>
-          <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md sm:h-9 sm:w-9">
-            <ArrowUpRight size={13} />
+          {/* Right Vertical Text */}
+          <div className="absolute right-3 top-1/2 z-20 hidden -translate-y-1/2 rotate-90 sm:right-5 sm:block">
+            <span className="font-mono text-[8px] tracking-[0.25em] text-white/50">
+              NOSH CREATIVE STUDIO — 2026
+            </span>
           </div>
-        </div>
-      </div>
 
-      {/* Corner Frame */}
-      <div className="pointer-events-none absolute inset-2.5 z-20 sm:inset-4">
-        <span className="absolute left-0 top-0 h-4 w-4 border-l border-t border-white/35 sm:h-6 sm:w-6" />
-        <span className="absolute right-0 top-0 h-4 w-4 border-r border-t border-white/35 sm:h-6 sm:w-6" />
-        <span className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-white/35 sm:h-6 sm:w-6" />
-        <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-white/35 sm:h-6 sm:w-6" />
-      </div>
+          {/* Center Play Decoration */}
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-black/20 text-white backdrop-blur-md transition-transform duration-500 sm:h-16 sm:w-16">
+              <Play
+                size={16}
+                fill="currentColor"
+                className="ml-1 sm:h-5 sm:w-5"
+              />
+            </div>
+          </div>
+
+          {/* Bottom Typography */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 p-3 sm:p-5 lg:p-7">
+            <h3 className="max-w-[95%] font-[Outfit] text-[clamp(1.5rem,5vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-white sm:max-w-[85%] sm:text-5xl lg:text-6xl">
+              {service.title}
+            </h3>
+
+            <p className="mt-1.5 text-[9px] tracking-wide text-white/65 sm:mt-2 sm:text-sm">
+              {service.sub}
+            </p>
+
+            <div className="mt-1 flex items-center justify-between pt-2 sm:pt-1">
+              <span className="font-mono text-[7px] tracking-[0.15em] text-white/50 sm:text-[9px]">
+                VIDEO STORYTELLING
+              </span>
+
+              <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md sm:h-9 sm:w-9">
+                <ArrowUpRight size={13} />
+              </div>
+            </div>
+          </div>
+
+          {/* Reel Frame Corners */}
+          <div className="pointer-events-none absolute inset-2.5 z-20 sm:inset-4">
+            <span className="absolute left-0 top-0 h-4 w-4 border-l border-t border-white/35 sm:h-6 sm:w-6" />
+            <span className="absolute right-0 top-0 h-4 w-4 border-r border-t border-white/35 sm:h-6 sm:w-6" />
+            <span className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-white/35 sm:h-6 sm:w-6" />
+            <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-white/35 sm:h-6 sm:w-6" />
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
@@ -298,8 +274,6 @@ const ServiceVisual = ({ service }) => {
 /* ================= SERVICE CONTENT ================= */
 
 const ServiceContent = ({ service, direction }) => {
-  const Icon = service.Icon;
-
   return (
     <motion.div
       key={service.id}
@@ -308,12 +282,16 @@ const ServiceContent = ({ service, direction }) => {
       initial="enter"
       animate="center"
       exit="exit"
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className="w-full"
     >
       {/* Eyebrow */}
       <div className="flex items-center gap-2.5 sm:gap-3">
         <span className="h-[3px] w-6 rounded-full bg-blue-600 sm:w-9" />
+
         <span className="font-mono text-[8px] font-bold tracking-[0.17em] text-blue-600 sm:text-[10px] sm:tracking-[0.22em]">
           {service.category}
         </span>
@@ -335,22 +313,24 @@ const ServiceContent = ({ service, direction }) => {
       </p>
 
       {/* Features */}
-      <ul className="mt-4 hidden space-y-2 sm:block">
-        {service.points.map((point, index) => (
-          <motion.li
-            key={point}
-            initial={{ opacity: 0, x: 12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 + index * 0.08 }}
-            className="flex items-center gap-3 text-xs font-medium text-black/70 lg:text-sm"
-          >
-            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
-              <Check size={11} strokeWidth={3} />
-            </span>
-            {point}
-          </motion.li>
-        ))}
-      </ul>
+    {/* Features */}
+<ul className="mt-4 hidden space-y-2 sm:block">
+  {service.points.map((point, index) => (
+    <motion.li
+      key={point}
+      initial={{ opacity: 0, x: 12 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.1 + index * 0.08 }}
+      className="flex items-center gap-3 text-xs font-medium text-black/70 lg:text-sm"
+    >
+      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+        <Check size={11} strokeWidth={3} />
+      </span>
+
+      {point}
+    </motion.li>
+  ))}
+</ul>
 
       {/* Meta & CTA */}
       <div className="mt-3 flex flex-wrap items-center gap-1.5 sm:mt-6 sm:gap-2.5">
@@ -395,7 +375,9 @@ const ServiceContent = ({ service, direction }) => {
         <span className="font-mono text-[8px] tracking-[0.12em] text-black/40">
           EXPLORE SERVICES
         </span>
+
         <span className="h-px w-6 bg-blue-200" />
+
         <span className="font-mono text-[8px] text-blue-600">
           {service.id} / 04
         </span>
@@ -427,6 +409,7 @@ const ServicesSection = () => {
         setDirection(index > previous ? 1 : -1);
         return index;
       }
+
       return previous;
     });
   });
@@ -434,14 +417,18 @@ const ServicesSection = () => {
   const goTo = (index) => {
     if (!sectionRef.current) return;
 
-    const safeIndex = Math.min(SERVICES.length - 1, Math.max(0, index));
+    const safeIndex = Math.min(
+      SERVICES.length - 1,
+      Math.max(0, index),
+    );
 
     setDirection(safeIndex > active ? 1 : -1);
 
     const sectionTop =
       sectionRef.current.getBoundingClientRect().top + window.scrollY;
 
-    const stepHeight = sectionRef.current.offsetHeight / SERVICES.length;
+    const stepHeight =
+      sectionRef.current.offsetHeight / SERVICES.length;
 
     window.scrollTo({
       top: sectionTop + safeIndex * stepHeight + 2,
@@ -450,11 +437,15 @@ const ServicesSection = () => {
   };
 
   const nextStep = () => {
-    if (active < SERVICES.length - 1) goTo(active + 1);
+    if (active < SERVICES.length - 1) {
+      goTo(active + 1);
+    }
   };
 
   const prevStep = () => {
-    if (active > 0) goTo(active - 1);
+    if (active > 0) {
+      goTo(active - 1);
+    }
   };
 
   const service = SERVICES[active];
@@ -489,7 +480,9 @@ const ServicesSection = () => {
           />
         </AnimatePresence>
 
+        {/* Blue Ambient Glows */}
         <div className="pointer-events-none absolute -right-32 -top-32 h-64 w-64 rounded-full bg-blue-200/30 blur-[100px] sm:h-[500px] sm:w-[500px]" />
+
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-blue-300/20 blur-[100px] sm:h-[450px] sm:w-[450px]" />
 
         {/* Main Layout */}
@@ -506,71 +499,81 @@ const ServicesSection = () => {
               </AnimatePresence>
             </div>
 
-            {/* RIGHT VISUAL */}
-            <div className="relative order-1 mx-auto h-[clamp(175px,27svh,260px)] w-full max-w-[350px] sm:h-[38svh] sm:max-h-[380px] sm:max-w-[440px] lg:order-2 lg:h-[62svh] lg:max-h-none lg:max-w-[500px] xl:max-w-[560px]">
-              {/* Ghost Number */}
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={service.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                  transition={{ duration: 0.45 }}
-                  className="pointer-events-none absolute -bottom-5 -right-1 select-none font-[Outfit] text-[clamp(6rem,28vw,10rem)] font-black leading-none tracking-[-0.1em] sm:-bottom-10 sm:-right-3 sm:text-[230px] lg:-bottom-16 lg:-right-8 lg:text-[340px]"
-                  style={{
-                    color: "transparent",
-                    WebkitTextStroke: `1.5px ${BLUE}35`,
-                  }}
-                >
-                  {service.id}
-                </motion.span>
-              </AnimatePresence>
+            {/* RIGHT VIDEO */}
+            <div className="relative order-1 flex w-full items-center justify-center lg:order-2">
 
-              {/* Visual Card */}
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={service.id}
-                  custom={direction}
-                  variants={imageVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    duration: 0.55,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="absolute inset-0 overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-[0_25px_80px_-30px_rgba(37,99,235,0.3)] sm:rounded-[26px]"
-                >
-                  <ServiceVisual service={service} />
-                </motion.div>
-              </AnimatePresence>
+              {/* Reel Wrapper — Controls all positioning */}
+              <div className="relative mx-auto w-fit">
 
-              {/* Desktop Chapter Selector */}
-              <div className="absolute -right-3 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-1.5 lg:flex">
-                {SERVICES.map((item, index) => (
-                  <button
-                    key={item.id}
-                    onClick={() => goTo(index)}
-                    aria-label={`Go to ${item.title}`}
-                    aria-current={active === index ? "step" : undefined}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border transition-all duration-300"
+                {/* Ghost Number */}
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.35 }}
+                    className="pointer-events-none absolute -bottom-8 -right-6 z-0 select-none font-[Outfit] text-[clamp(6rem,15vw,12rem)] font-black leading-none tracking-[-0.1em] sm:-bottom-12 sm:-right-10 lg:-bottom-16 lg:-right-16 lg:text-[240px]"
                     style={{
-                      borderColor: active === index ? BLUE : "rgba(0,0,0,0.08)",
-                      backgroundColor:
-                        active === index ? BLUE : "rgba(255,255,255,0.8)",
-                      transform: active === index ? "scale(1.15)" : "scale(1)",
+                      color: "transparent",
+                      WebkitTextStroke: `1.5px ${BLUE}35`,
                     }}
                   >
-                    <span
-                      className="font-mono text-[8px] font-bold"
+                    {service.id}
+                  </motion.span>
+                </AnimatePresence>
+
+                {/* Fixed Reel Card — 9:16 */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative z-10 h-[min(58svh,520px)] aspect-[9/16] shrink-0 overflow-hidden rounded-[24px] border border-blue-100 bg-[#06101f] shadow-[0_30px_100px_-35px_rgba(37,99,235,0.35)] sm:h-[min(68svh,620px)] sm:rounded-[30px] lg:h-[min(76svh,700px)]"
+                >
+                  <ServiceVisual
+                    service={service}
+                    activeIndex={active}
+                  />
+                </motion.div>
+
+                {/* Chapter Selector — Attached to reel */}
+                <div className="absolute -right-[46px] top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-2 lg:flex xl:-right-[54px]">
+                  {SERVICES.map((item, index) => (
+                    <button
+                      key={item.id}
+                      onClick={() => goTo(index)}
+                      aria-label={`Go to ${item.title}`}
+                      aria-current={active === index ? "step" : undefined}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300"
                       style={{
-                        color: active === index ? "#fff" : "rgba(0,0,0,0.4)",
+                        borderColor:
+                          active === index
+                            ? BLUE
+                            : "rgba(37,99,235,0.12)",
+                        backgroundColor:
+                          active === index ? BLUE : "#ffffff",
+                        transform:
+                          active === index ? "scale(1.12)" : "scale(1)",
+                        boxShadow:
+                          active === index
+                            ? "0 5px 18px rgba(37,99,235,0.25)"
+                            : "none",
                       }}
                     >
-                      {item.id}
-                    </span>
-                  </button>
-                ))}
+                      <span
+                        className="font-mono text-[8px] font-bold"
+                        style={{
+                          color:
+                            active === index
+                              ? "#ffffff"
+                              : "rgba(0,0,0,0.4)",
+                        }}
+                      >
+                        {item.id}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -615,7 +618,7 @@ const ServicesSection = () => {
               ))}
             </div>
 
-            {/* Desktop Scroll Label */}
+            {/* Desktop Scroll Label & Buttons */}
             <div className="hidden items-center gap-3 sm:flex">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -680,6 +683,10 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+
+
+
+
 
 // import { useRef, useState } from "react";
 // import {
