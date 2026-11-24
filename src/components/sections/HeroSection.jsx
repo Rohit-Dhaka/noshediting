@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
@@ -48,7 +47,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative isolate h-[78svh] min-h-[480px] w-full overflow-hidden bg-[#050608] text-white sm:h-[85svh] sm:min-h-[600px] lg:h-[100svh] lg:min-h-[700px]">
-
       {/* BACKGROUND SLIDER */}
       <div className="absolute inset-0 z-0">
         <Swiper
@@ -78,7 +76,9 @@ const HeroSection = () => {
                   alt={slide.label}
                   loading={slide.id === 1 ? "eager" : "lazy"}
                   fetchPriority={slide.id === 1 ? "high" : "auto"}
-                  decoding="async"
+                  decoding={slide.id === 1 ? "sync" : "async"}
+                  width="1920"
+                  height="1080"
                   className="h-full w-full object-cover object-center"
                 />
               </motion.div>
@@ -156,12 +156,9 @@ const HeroSection = () => {
 
       {/* MAIN CONTENT */}
       <div className="relative z-[5] mx-auto flex h-full w-full max-w-[1600px] flex-col items-center px-4 pb-[90px] pt-[145px] sm:px-6 sm:pb-[105px] sm:pt-[155px] lg:px-14 lg:pb-[115px] lg:pt-[155px] xl:px-20">
-
         {/* CENTER CONTENT */}
         <div className="flex w-full flex-1 items-center justify-center">
           <div className="relative mx-auto flex w-full max-w-[1150px] flex-col items-center justify-center text-center">
-
-       
             {/* SLIDE LABEL */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -193,7 +190,10 @@ const HeroSection = () => {
                 className="relative w-full overflow-hidden"
               >
                 {currentSlide.title.map((line, index) => (
-                  <div key={`${active}-${index}`} className="overflow-hidden px-1">
+                  <div
+                    key={`${active}-${index}`}
+                    className="overflow-hidden px-1"
+                  >
                     <motion.h1
                       initial={{ y: "110%", opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -267,7 +267,6 @@ const HeroSection = () => {
         {/* COMPACT BOTTOM CONTROLS */}
         <div className="absolute bottom-3 left-4 right-4 z-[6] sm:bottom-5 sm:left-6 sm:right-6 lg:bottom-6 lg:left-14 lg:right-14 xl:left-20 xl:right-20">
           <div className="flex w-full items-center justify-between gap-3">
-
             {/* COUNTER */}
             <div className="flex min-w-[48px] items-center gap-1 sm:min-w-[70px] sm:gap-1.5">
               <AnimatePresence mode="wait">
@@ -285,8 +284,6 @@ const HeroSection = () => {
                 / 03
               </span>
             </div>
-
-      
 
             {/* ARROWS */}
             <div className="flex min-w-[68px] items-center justify-end gap-1 sm:min-w-[94px] sm:gap-2">
@@ -342,7 +339,6 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
 
 // import { useState } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
