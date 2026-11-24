@@ -1,4 +1,4 @@
-// Footer.jsx
+
 import { motion } from "motion/react";
 
 import { ArrowUpRight } from "lucide-react";
@@ -36,25 +36,23 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden rounded-t-[28px] bg-[#0b0b0d] text-white sm:rounded-t-[40px]">
       <div className="mx-auto max-w-[1600px] px-5 pt-10 sm:px-8 sm:pt-12 lg:px-12 xl:px-16">
-        {/* ================= TOP CONTENT ================= */}
+        
 
         <div className="grid grid-cols-2 gap-x-8 gap-y-9 border-b border-white/10 pb-9 sm:grid-cols-4 sm:gap-8 sm:pb-11">
-          {/* Brand intro */}
+          
           <div className="max-w-[260px]">
             <a href="/" className="block overflow-hidden">
               <img
                 src={Logo}
                 alt="Nosh Infotech"
-                className="h-14 w-full object-cover object-center sm:-ml-[12px]"
+                className="h-14 w-full object-cover object-center -ml-[8px] sm:-ml-[12px]"
               />
             </a>
 
             <p className="mt-2 text-sm leading-6 text-white/65">
               Creative digital experiences, crafted to make brands stand out.
             </p>
-          </div>
-
-          {/* Navigation */}
+          </div>          
           <div>
             <p className="mb-4 text-sm font-medium text-white">Explore</p>
 
@@ -77,7 +75,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social links */}
+          
           <div>
             <p className="mb-4 text-sm font-medium text-white">Follow us</p>
 
@@ -114,7 +112,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Call / Contact */}
+          
           <div className="flex flex-col items-start">
             <a
               href="/contact"
@@ -149,7 +147,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ================= BIG BRAND TEXT ================= */}
+        
 
         <div className="relative mt-8 overflow-hidden sm:mt-10">
           <motion.div

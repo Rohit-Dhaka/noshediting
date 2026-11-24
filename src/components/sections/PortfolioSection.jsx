@@ -9,14 +9,14 @@ import { ArrowRight, ArrowUpRight, Play, X } from "lucide-react";
 
 import "swiper/css";
 
-// Har column: direction, starting offset (videos repeat na dikhein), speed
+
 const COLUMNS = [
-  { reverse: false, offset: 0, speed: 9000 }, // bottom -> top
-  { reverse: true, offset: 2, speed: 11000 }, // top -> bottom
-  { reverse: false, offset: 4, speed: 10000 }, // bottom -> top
+  { reverse: false, offset: 0, speed: 9000 }, 
+  { reverse: true, offset: 2, speed: 11000 }, 
+  { reverse: false, offset: 4, speed: 10000 }, 
 ];
 
-// Loop smooth rakhne ke liye minimum slides chahiye
+
 const buildColumnItems = (projects, offset, min = 8) => {
   if (!projects.length) return [];
   const rotated = projects.map(
@@ -30,21 +30,21 @@ const buildColumnItems = (projects, offset, min = 8) => {
 const MASK =
   "linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%)";
 
-/* ---------- Cloudinary helpers ---------- */
 
-// Small, optimized version for the thumbnails in the columns
+
+
 const optimize = (url, width = 360) =>
   url?.includes("/upload/")
     ? url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`)
     : url;
 
-// Full quality (auto format only) for the modal player
+
 const optimizeFull = (url) =>
   url?.includes("/upload/")
     ? url.replace("/upload/", "/upload/f_auto,q_auto/")
     : url;
 
-// First frame of the video as an image
+
 const makePoster = (url, width = 360) =>
   url?.includes("/upload/")
     ? url
@@ -52,13 +52,13 @@ const makePoster = (url, width = 360) =>
         .replace(/\.(mp4|mov|webm)$/i, ".jpg")
     : undefined;
 
-/* ---------- Lazy video for each reel slide ---------- */
+
 const ReelThumb = ({ src }) => {
   const videoRef = useRef(null);
   const [inView, setInView] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(false); // stays true after first view
+  const [shouldLoad, setShouldLoad] = useState(false); 
 
-  // Detect when this slide is visible
+  
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
@@ -75,7 +75,7 @@ const ReelThumb = ({ src }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Play when visible, pause when off screen
+  
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !shouldLoad) return;
@@ -108,7 +108,7 @@ const PortfolioSection = () => {
       : PROJECTS.filter((project) => project.category === category);
   }, [category]);
 
-  // Modal: Esc close + body scroll lock
+  
   useEffect(() => {
     document.body.style.overflow = activeProject ? "hidden" : "";
 
@@ -135,21 +135,21 @@ const PortfolioSection = () => {
   return (
     <section
       id="videos"
-      className="relative overflow-hidden bg-[#08090c] py-14 text-white sm:py-20"
+      className="relative overflow-hidden bg-[#08090c] py-15 text-white sm:py-20"
     >
-      {/* Smooth continuous scroll ke liye linear timing */}
+      
       <style>{`
         .reel-swiper .swiper-wrapper {
           transition-timing-function: linear !important;
         }
       `}</style>
 
-      {/* Soft blue glow */}
+      
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10 xl:px-12">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-          {/* ================= LEFT: 3 VERTICAL REEL COLUMNS ================= */}
+          
           <div
             className="order-2 grid h-[440px] grid-cols-3 grid-rows-[100%] gap-3 sm:h-[540px] sm:gap-4 lg:order-1 lg:h-[620px]"
             style={{ maskImage: MASK, WebkitMaskImage: MASK }}
@@ -189,7 +189,7 @@ const PortfolioSection = () => {
 
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
 
-                          {/* Play on hover */}
+                          
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/60 bg-white/10 backdrop-blur-md">
                               <Play className="ml-0.5 h-4 w-4 fill-white text-white" />
@@ -213,7 +213,7 @@ const PortfolioSection = () => {
             })}
           </div>
 
-          {/* ================= RIGHT: CONTENT ================= */}
+          
           <div className="order-1 text-center lg:order-2 lg:text-left">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -247,7 +247,7 @@ const PortfolioSection = () => {
               grab attention in the first second and keep it till the last.
             </motion.p>
 
-            {/* Category filters */}
+            
             <div className="mt-4 sm:mt-7 flex flex-wrap justify-center gap-2 lg:justify-start">
               {CATEGORIES.map((item) => (
                 <button
@@ -264,7 +264,7 @@ const PortfolioSection = () => {
               ))}
             </div>
 
-            {/* Buttons */}
+            
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <a
                 href="https://wa.me/919253174295?text=Hi%2C%20I%20want%20to%20start%20a%20project%20with%20you."
@@ -277,7 +277,7 @@ const PortfolioSection = () => {
               </a>
             </div>
 
-            {/* Stats */}
+            
             <div className="sm:mt-10 flex items-center justify-center gap-8 sm:border-t border-white/10 pt-6 lg:justify-start">
               <div>
                 <p className="text-2xl font-bold text-white">
@@ -301,7 +301,7 @@ const PortfolioSection = () => {
         </div>
       </div>
 
-      {/* ================= VIDEO MODAL ================= */}
+      
       <AnimatePresence>
         {activeProject && (
           <motion.div

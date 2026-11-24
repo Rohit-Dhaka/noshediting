@@ -64,7 +64,7 @@ const ProcessSection = () => {
   const current = STEPS[active];
   const { Icon } = current;
 
-  // Auto play
+  
   useEffect(() => {
     if (paused) return;
 
@@ -75,21 +75,13 @@ const ProcessSection = () => {
     return () => clearInterval(timer);
   }, [paused]);
 
-  const whatsappLink = `https://wa.me/919253174295?text=${encodeURIComponent(
-    "Hello Nosh Infotech, I want to start a video editing project.",
-  )}`;
+
 
   return (
-    <section
-      id="process"
-      className="relative isolate overflow-hidden bg-white py-12 text-[#171717] sm:py-16"
-    >
-      {/* Background decoration */}
+    <section id="process" className="relative isolate overflow-hidden bg-white py-15 text-[#171717] sm:py-16" >      
       <div className="pointer-events-none absolute -right-40 top-20 h-[400px] w-[400px] rounded-full bg-blue-50 blur-[120px]" />
       <div className="pointer-events-none absolute -left-40 bottom-0 h-[350px] w-[350px] rounded-full bg-[#f4f6ff] blur-[120px]" />
-
-      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
-        {/* Header */}
+      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">        
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

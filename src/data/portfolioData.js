@@ -2,7 +2,7 @@
 export const CATEGORIES = ["All", "Reels", "YouTube", "Ads", "Wedding"];
 
 export const PROJECTS = [
-  // ───────────── KANIKA SHARMA ─────────────
+  
   {
     id: 1,
     title: "Kanika Sharma — Video 01",
@@ -49,7 +49,7 @@ export const PROJECTS = [
     videoUrl: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795241048/KanikaSharma5.mp4",
   },
 
-  // ───────────── BHAVYA SHARMA ─────────────
+  
   {
     id: 6,
     title: "Bhavya Sharma — Video 01",
@@ -96,7 +96,7 @@ export const PROJECTS = [
     videoUrl: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795241092/bhavyasharma5.mov",
   },
 
-  // ───────────── DEEPA VISKRAMA ─────────────
+  
   {
     id: 11,
     title: "Deepa Vis krama — Video 01",
@@ -143,7 +143,7 @@ export const PROJECTS = [
     videoUrl: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795244591/deepaviskrama5_1.mp4",
   },
 
-  // ───────────── FIZA ─────────────
+  
   {
     id: 16,
     title: "Fiza — Video 01",
@@ -190,7 +190,7 @@ export const PROJECTS = [
     videoUrl: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795240805/fiza5.mp4",
   },
 
-  // ───────────── SALONI ─────────────
+  
   {
     id: 21,
     title: "Saloni — Video 01",
@@ -237,7 +237,7 @@ export const PROJECTS = [
     videoUrl: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795243516/saloni5_1.mp4",
   },
 
-  // ───────────── ISHWARIYA ─────────────
+  
   {
     id: 26,
     title: "Ishwariya — Video 01",

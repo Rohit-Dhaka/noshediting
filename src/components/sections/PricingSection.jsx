@@ -163,10 +163,8 @@ const PricingSection = () => {
   return (
     <section
       id="price"
-      className="relative isolate overflow-hidden bg-black py-20 text-white sm:py-16"
-    >
-      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
-        {/* Header */}
+      className="relative isolate overflow-hidden bg-black py-15 text-white sm:py-20">
+      <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">        
         <div className="relative z-10 flex flex-col items-center text-center">
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
@@ -175,11 +173,7 @@ const PricingSection = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl font-[Outfit] text-5xl font-semibold leading-[0.95] tracking-[-0.07em] sm:text-7xl lg:text-[100px]"
           >
-            Plans. Pricing. Quality.
-            {/* <br />
-            <span className="bg-gradient-to-r from-blue-300 via-blue-500 to-cyan-300 bg-clip-text text-transparent">
-              next visual.
-            </span> */}
+            Plans. Pricing. Quality.           
           </motion.h2>
 
           <motion.p
@@ -192,8 +186,7 @@ const PricingSection = () => {
             Transparent packages. Thoughtful editing. Everything your content
             needs to stand out.
           </motion.p>
-
-          {/* Tabs */}
+          
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -236,7 +229,7 @@ const PricingSection = () => {
           </motion.div>
         </div>
 
-        {/* Pricing cards */}
+        
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
@@ -384,5 +377,4 @@ const PricingSection = () => {
     </section>
   );
 };
-
 export default PricingSection;

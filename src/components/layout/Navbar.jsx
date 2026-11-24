@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ArrowUpRight,
-  ArrowDownRight,
+  ArrowUpRight,  
   Menu,
-  X,
-  Circle,
+  X,  
 } from "lucide-react";
 
 import Logo from "../../assets/images/Logo.webp";
@@ -27,7 +25,7 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  // Scroll state + page progress
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
@@ -50,7 +48,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle section navigation
+  
   useEffect(() => {
     if (!location.hash) {
       if (location.pathname === "/") {
@@ -71,12 +69,12 @@ const Navbar = () => {
     return () => cancelAnimationFrame(frame);
   }, [location.pathname, location.hash]);
 
-  // Close menu when location changes
+  
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname, location.hash]);
 
-  // Prevent background scrolling on mobile menu
+  
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
 
@@ -86,8 +84,7 @@ const Navbar = () => {
       document.body.style.overflow = previousOverflow;
     };
   }, [isMenuOpen]);
-
-  // Active route
+  
   const isActive = (path) => {
     if (path === "/") {
       return location.pathname === "/" && !location.hash;
@@ -103,7 +100,7 @@ const Navbar = () => {
     return location.pathname === path;
   };
 
-  // WhatsApp
+  
   const whatsappLink = `https://wa.me/919253174295?text=${encodeURIComponent(
     "Hello Nosh Infotech, I want to discuss a video editing project."
   )}`;
@@ -112,7 +109,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ================= DESKTOP / MAIN NAVBAR ================= */}
+      
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
         <motion.div
           animate={{
@@ -257,7 +254,7 @@ const Navbar = () => {
         </motion.div>
       </header>
 
-      {/* ================= MOBILE FULLSCREEN MENU ================= */}
+      
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -266,10 +263,7 @@ const Navbar = () => {
             exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#080808] px-6 pb-6 pt-28 sm:px-10 lg:hidden"
-          >
-   
-
-            {/* Menu links */}
+          >               
             <nav className="flex flex-col">
               {navLinks.map((link, index) => {
                 const active = isActive(link.path);
@@ -325,9 +319,7 @@ const Navbar = () => {
                   </motion.div>
                 );
               })}
-            </nav>
-
-        
+            </nav>        
           </motion.div>
         )}
       </AnimatePresence>

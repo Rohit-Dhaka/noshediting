@@ -48,14 +48,14 @@ const Highlight = ({ children }) => (
   </span>
 );
 
-/* Reel video component (lazy loaded) */
+
 const ReelVideo = ({ src, number, label, className = "" }) => {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(false); // stays true after first view
+  const [shouldLoad, setShouldLoad] = useState(false); 
 
-  // Detect when this reel is on screen
+  
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
@@ -72,7 +72,7 @@ const ReelVideo = ({ src, number, label, className = "" }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Play when visible, pause when off screen
+  
   useEffect(() => {
     const video = videoRef.current;
     if (!video || !shouldLoad) return;
@@ -152,7 +152,7 @@ const AboutSection = () => {
       id="about"
       className="overflow-hidden bg-[#f5f5f2] text-[#171717]"
     >
-      <div className="mx-auto max-w-[1500px] px-5 py-10 sm:px-8 sm:py-14 lg:px-14 xl:px-20">
+      <div className="mx-auto max-w-[1500px]  py-15 sm:py-14 px-5  sm:px-8 lg:px-14 xl:px-20">
 
         {/* MAIN LAYOUT */}
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
@@ -241,12 +241,12 @@ const AboutSection = () => {
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE — PORTRAIT REEL WALL */}
+          
           <motion.div
             {...reveal}
             className="lg:col-span-7"
           >
-            {/* Three vertical reel videos */}
+            
             <div className="grid grid-cols-3 items-start gap-2 sm:gap-3">
 
               {/* Reel 01 */}
@@ -257,7 +257,7 @@ const AboutSection = () => {
                 className="aspect-[9/16]"
               />
 
-              {/* Reel 02 - shifted down */}
+              
               <ReelVideo
                 src={VIDEOS[1]}
                 number="02"
@@ -265,7 +265,7 @@ const AboutSection = () => {
                 className="mt-7 aspect-[9/16] sm:mt-12"
               />
 
-              {/* Reel 03 */}
+              
               <ReelVideo
                 src={VIDEOS[2]}
                 number="03"
@@ -274,7 +274,7 @@ const AboutSection = () => {
               />
             </div>
 
-            {/* Reel wall footer */}
+            
             <div className="mt-3 flex items-center justify-between border-t border-black/15 pt-2.5">
               <div>
                 <p
