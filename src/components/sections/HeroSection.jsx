@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
@@ -44,7 +45,7 @@ const HeroSection = () => {
   const currentSlide = slides[active];
 
   return (
-    <section className="relative isolate h-screen h-[100svh] w-full overflow-hidden bg-[#08090c] text-white">
+    <section className="relative isolate h-screen sm:h-[100svh] w-full overflow-hidden bg-[#08090c] text-white">
       {/* BACKGROUND SLIDER */}
       <div className="absolute inset-0 z-0">
         <Swiper
@@ -86,9 +87,8 @@ const HeroSection = () => {
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/80 via-transparent to-black/35" />
 
       <div className="relative z-[5] mx-auto flex h-full w-full max-w-[1600px] flex-col px-5 sm:px-8 lg:px-14 xl:px-20">
-      
         <div className="my-auto mb-4 sm:mb-10 pb-4">
-            <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.label}
               initial={{ opacity: 0, y: 12 }}
