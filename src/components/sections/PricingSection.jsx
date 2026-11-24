@@ -1,15 +1,12 @@
-
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   Check,
   ArrowUpRight,
-  Crosshair,
   Smartphone,
   Film,
   Megaphone,
   Sparkles,
-  MoveUpRight,
 } from "lucide-react";
 
 const TABS = [
@@ -23,22 +20,23 @@ const PLANS = {
     {
       name: "Starter",
       price: "499",
-      desc: "A clean, engaging edit to get your content moving.",
+      desc: "Perfect for starting your content journey.",
       features: [
-        "Up to 30 sec",
-        "Basic cuts & transitions",
+        "Up to 30 sec video",
+        "Clean cuts & transitions",
         "Captions",
+        "Basic sound design",
         "1 revision",
         "24h delivery",
       ],
     },
     {
-      name: "Pro",
+      name: "Professional",
       price: "999",
-      desc: "Built to grab attention and keep viewers watching.",
+      desc: "Made to grab attention and keep people watching.",
       features: [
-        "Up to 60 sec",
-        "Hook & trending style",
+        "Up to 60 sec video",
+        "Hook-focused editing",
         "Animated captions",
         "Color grading",
         "Sound effects",
@@ -49,40 +47,42 @@ const PLANS = {
     {
       name: "Premium",
       price: "1,999",
-      desc: "A high-end visual experience with cinematic details.",
+      desc: "High-end visuals with cinematic details.",
       features: [
-        "Up to 90 sec",
+        "Up to 90 sec video",
+        "Advanced editing",
         "Motion graphics",
-        "Advanced color grade",
+        "Cinematic color grading",
         "Custom sound design",
-        "Unlimited revisions",
         "Priority delivery",
       ],
     },
   ],
+
   youtube: [
     {
       name: "Starter",
       price: "1,999",
       desc: "A clean edit that keeps your story flowing.",
       features: [
-        "Up to 5 min",
+        "Up to 5 min video",
         "Cuts & jump cuts",
         "Basic color correction",
         "Background music",
+        "Sound cleanup",
         "2 revisions",
       ],
     },
     {
-      name: "Pro",
+      name: "Professional",
       price: "3,999",
-      desc: "Story-driven editing designed to improve watch time.",
+      desc: "Story-driven edits for better viewer retention.",
       features: [
-        "Up to 12 min",
-        "B-roll & transitions",
+        "Up to 12 min video",
+        "B-roll integration",
+        "Smooth transitions",
         "Color grading",
         "Sound design",
-        "Thumbnail-ready cut",
         "3 revisions",
       ],
       popular: true,
@@ -90,40 +90,42 @@ const PLANS = {
     {
       name: "Premium",
       price: "7,999",
-      desc: "A cinematic experience for serious content creators.",
+      desc: "A cinematic experience for serious creators.",
       features: [
-        "Up to 25 min",
-        "Motion graphics & titles",
-        "Advanced grading",
+        "Up to 25 min video",
+        "Advanced storytelling",
+        "Motion graphics",
+        "Advanced color grade",
         "Full audio mix",
-        "Unlimited revisions",
         "Priority delivery",
       ],
     },
   ],
+
   ads: [
     {
       name: "Starter",
       price: "1,499",
-      desc: "Simple product videos built around your offer.",
+      desc: "Simple videos built around your offer.",
       features: [
-        "Up to 30 sec",
+        "Up to 30 sec video",
         "Hook & offer text",
-        "1 aspect ratio",
+        "Product-focused editing",
         "Music & SFX",
+        "1 format",
         "2 revisions",
       ],
     },
     {
-      name: "Pro",
+      name: "Professional",
       price: "2,999",
-      desc: "Creative ad edits built to drive more action.",
+      desc: "Creative ads designed to drive action.",
       features: [
-        "Up to 45 sec",
-        "UGC style edit",
-        "9:16 + 1:1 exports",
+        "Up to 45 sec video",
+        "UGC-style editing",
+        "9:16 & 1:1 formats",
         "Color grading",
-        "A/B hook variant",
+        "A/B hook variation",
         "3 revisions",
       ],
       popular: true,
@@ -131,14 +133,14 @@ const PLANS = {
     {
       name: "Premium",
       price: "5,999",
-      desc: "A complete brand promo designed to stand out.",
+      desc: "A complete promo built for your brand.",
       features: [
-        "Up to 60 sec",
+        "Up to 60 sec video",
+        "Premium visual editing",
         "Motion graphics",
         "All aspect ratios",
-        "Custom sound design",
-        "3 hook variants",
-        "Unlimited revisions",
+        "3 hook variations",
+        "Priority delivery",
       ],
     },
   ],
@@ -146,11 +148,12 @@ const PLANS = {
 
 const PricingSection = () => {
   const [tab, setTab] = useState("reels");
-  const active = TABS.find((t) => t.id === tab);
+
+  const activeTab = TABS.find((t) => t.id === tab);
 
   const getLink = (plan) =>
     `https://wa.me/919253174295?text=${encodeURIComponent(
-      `Hello Nosh Infotech, I want the ${plan} plan for ${active.label} editing.`,
+      `Hello Nosh Infotech, I want the ${plan} package for ${activeTab.label} editing.`,
     )}`;
 
   const customLink = `https://wa.me/919253174295?text=${encodeURIComponent(
@@ -159,59 +162,43 @@ const PricingSection = () => {
 
   return (
     <section
-      id="pricing"
-      className="relative isolate overflow-hidden bg-[#090b10] py-20 text-white sm:py-28"
+      id="price"
+      className="relative isolate overflow-hidden bg-black py-20 text-white sm:py-16"
     >
-   
-
-      
-      
-    
-
-   
-
       <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
-
-       
-
-        {/* Heading area */}
-        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
-          >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/[0.07] px-3 py-1.5">
-              <Sparkles size={12} className="text-blue-400" />
-              <span className="font-mono text-[9px] tracking-[0.2em] text-blue-300">
-                EDIT WITH INTENTION
-              </span>
-            </div>
-
-            <h2 className="text-[48px] font-[Outfit] font-semibold leading-[0.9] tracking-[-0.08em] sm:text-[80px] xl:text-[108px]">
-              Good visuals.
-              <br />
-              <span className="text-white/30">Better </span>
-              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
-                impact.
-              </span>
-            </h2>
-
-            <p className="mt-6 max-w-[420px] text-sm leading-7 text-white/45 sm:text-base">
-              Flexible editing packages for creators and brands that want
-              to turn ordinary footage into extraordinary content.
-            </p>
-          </motion.div>
-
-          {/* Tabs */}
-          <motion.div
+        {/* Header */}
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <motion.h2
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex w-fit flex-wrap gap-1.5 rounded-xl border border-white/10 bg-white/[0.035] p-1.5 backdrop-blur-xl"
+            className="max-w-4xl font-[Outfit] text-5xl font-semibold leading-[0.95] tracking-[-0.07em] sm:text-7xl lg:text-[100px]"
+          >
+            Plans. Pricing. Quality.
+            {/* <br />
+            <span className="bg-gradient-to-r from-blue-300 via-blue-500 to-cyan-300 bg-clip-text text-transparent">
+              next visual.
+            </span> */}
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-5 max-w-lg text-sm leading-7 text-white/40 sm:text-base"
+          >
+            Transparent packages. Thoughtful editing. Everything your content
+            needs to stand out.
+          </motion.p>
+
+          {/* Tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-6 flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] p-1.5 backdrop-blur-xl"
           >
             {TABS.map(({ id, label, Icon }) => {
               const selected = tab === id;
@@ -220,25 +207,27 @@ const PricingSection = () => {
                 <button
                   key={id}
                   onClick={() => setTab(id)}
-                  className={`relative flex items-center gap-2 rounded-lg px-4 py-3 text-xs font-medium transition-colors sm:px-5 ${
-                    selected
-                      ? "text-white"
-                      : "text-white/40 hover:text-white"
+                  className={`relative flex items-center gap-2 rounded-full px-4 py-2.5 text-xs transition-colors sm:px-6 ${
+                    selected ? "text-white" : "text-white/40 hover:text-white"
                   }`}
                 >
                   {selected && (
                     <motion.span
-                      layoutId="darkPricingTab"
-                      className="absolute inset-0 rounded-lg border border-blue-400/30 bg-blue-500/15 shadow-[0_0_25px_rgba(59,130,246,0.08)]"
+                      layoutId="pricing-pill"
+                      className="absolute inset-0 rounded-full border border-blue-400/20 bg-blue-500/15"
                       transition={{
                         type: "spring",
-                        stiffness: 400,
+                        stiffness: 350,
                         damping: 30,
                       }}
                     />
                   )}
+
                   <span className="relative z-10 flex items-center gap-2">
-                    <Icon size={15} className={selected ? "text-blue-400" : ""} />
+                    <Icon
+                      size={14}
+                      className={selected ? "text-blue-400" : ""}
+                    />
                     {label}
                   </span>
                 </button>
@@ -247,121 +236,150 @@ const PricingSection = () => {
           </motion.div>
         </div>
 
-        {/* Plan cards */}
+        {/* Pricing cards */}
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.35 }}
-            className="mt-16 grid gap-5 lg:grid-cols-3 lg:gap-6"
+            className="mt-8 grid items-stretch gap-5 lg:grid-cols-3 lg:gap-6"
           >
-            {PLANS[tab].map((p, i) => (
+            {PLANS[tab].map((plan, index) => (
               <motion.div
-                key={`${tab}-${p.name}`}
-                initial={{ opacity: 0, y: 30 }}
+                key={`${tab}-${plan.name}`}
+                initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -8 }}
-                className={`group relative flex flex-col overflow-hidden rounded-2xl border p-6 sm:p-8 ${
-                  p.popular
-                    ? "border-blue-500/40 bg-[#101725] shadow-[0_0_60px_-20px_rgba(37,99,235,0.25)]"
-                    : "border-white/[0.08] bg-[#0e1118] hover:border-white/20"
+                transition={{ delay: index * 0.12, duration: 0.5 }}
+                whileHover={{ y: -6 }}
+                className={`group relative flex flex-col overflow-hidden rounded-[28px] border backdrop-blur-2xl ${
+                  plan.popular
+                    ? "border-blue-300/30 bg-[#101721]/90 shadow-[0_0_70px_-20px_rgba(59,130,246,0.3)]"
+                    : "border-white/[0.12] bg-white/[0.035] hover:border-white/20"
                 }`}
               >
-                {/* Popular card glow */}
-                {p.popular && (
-                  <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-blue-500/[0.10] blur-[80px]" />
+                {/* Card glow */}
+                {plan.popular && (
+                  <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blue-500/15 blur-[100px]" />
                 )}
-                                            
-                {/* Plan name */}
-                <div className="relative z-10 mt-7">
-                  <h3 className="text-3xl font-semibold tracking-[-0.06em] sm:text-4xl">
-                    {p.name}
-                  </h3>
-                  <p className="mt-3 min-h-[48px] max-w-[280px] text-sm leading-6 text-white/40">
-                    {p.desc}
+
+                {/* Recommended label */}
+                <div className="relative z-10 min-h-[38px] px-7 pt-5 sm:px-8">
+                  {plan.popular && (
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-[9px] font-medium tracking-[0.14em] text-blue-300">
+                      <Sparkles size={11} />
+                      MOST POPULAR
+                    </span>
+                  )}
+                </div>
+
+                {/* Plan details */}
+                <div className="relative z-10 px-7 pb-5 sm:px-8">
+                  <h3 className="text-sm text-white/55">{plan.name}</h3>
+
+                  <div className="mt-1 flex items-end gap-1">
+                    <span className="mb-2 text-xl text-white/60">₹</span>
+
+                    <span className="text-[52px] font-medium leading-none tracking-[-0.075em] sm:text-[60px]">
+                      {plan.price}
+                    </span>
+                  </div>
+
+                  <p className="mt-2 font-mono text-[9px] tracking-[0.15em] text-white/30">
+                    / PER {activeTab.unit}
+                  </p>
+
+                  <p className="mt-5 min-h-[42px] max-w-[270px] text-xs leading-5 text-white/45">
+                    {plan.desc}
                   </p>
                 </div>
 
-                {/* Price block */}
-                <div className="relative z-10 mt-8 border-y border-white/[0.08] py-7">
-                  <div className="flex items-start gap-1">
-                    <span className="mt-2 text-lg font-medium text-white/65">
-                      ₹
-                    </span>
-                    <span className="text-[64px] font-semibold leading-[0.88] tracking-[-0.085em] sm:text-[76px]">
-                      {p.price}
-                    </span>
-                  </div>
-                  <div className="mt-4 flex items-center gap-2">
-                    <span className="h-1 w-6 rounded-full bg-blue-500" />
-                    <span className="font-mono text-[9px] tracking-[0.15em] text-white/30">
-                      PER {active.unit}
-                    </span>
-                  </div>
-                </div>
+                {/* Divider */}
+                <div className="relative z-10 mx-7 border-t border-white/[0.10] sm:mx-8" />
 
-                {/* Features header */}
-                <div className="relative z-10 mt-7 flex items-center justify-between">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/50">
-                    Included features
-                  </span>
-                  <span className="font-mono text-[9px] text-white/25">
-                    {String(p.features.length).padStart(2, "0")} ITEMS
-                  </span>
-                </div>
+                {/* Features */}
+                <div className="relative z-10 px-7 py-6 sm:px-8">
+                  <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-white/35">
+                    WHAT'S INCLUDED
+                  </p>
 
-                {/* Feature list */}
-                <ul className="relative z-10 mt-5 flex-1 space-y-4">
-                  {p.features.map((f, index) => (
-                    <motion.li
-                      key={f}
-                      initial={{ opacity: 0, x: -8 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.15 + index * 0.04 }}
-                      className="flex items-center gap-3 text-sm text-white/70"
-                    >
-                      <span
-                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md ${
-                          p.popular
-                            ? "bg-blue-500/15 text-blue-400"
-                            : "bg-white/[0.05] text-blue-400"
-                        }`}
+                  <ul className="space-y-4">
+                    {plan.features.map((feature, i) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + i * 0.04 }}
+                        className="flex items-center gap-3 text-xs text-white/70"
                       >
-                        <Check size={12} strokeWidth={2.5} />
-                      </span>
-                      {f}
-                    </motion.li>
-                  ))}
-                </ul>
+                        <span
+                          className={`flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full ${
+                            plan.popular
+                              ? "bg-blue-500/15 text-blue-400"
+                              : "bg-white/[0.07] text-white/65"
+                          }`}
+                        >
+                          <Check size={12} strokeWidth={2.5} />
+                        </span>
 
-                {/* CTA */}
-                <a
-                  href={getLink(p.name)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`relative z-10 mt-9 flex items-center justify-between rounded-xl px-5 py-4 text-sm font-semibold transition-all duration-300 ${
-                    p.popular
-                      ? "bg-blue-600 text-white shadow-[0_8px_30px_-10px_rgba(37,99,235,0.6)] hover:bg-blue-500"
-                      : "border border-white/10 bg-white/[0.04] text-white hover:border-blue-500/40 hover:bg-blue-500/10"
-                  }`}
-                >
-                  <span>{p.popular ? "Choose recommended" : "Select package"}</span>
-                  <ArrowUpRight
-                    size={17}
-                    className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  />
-                </a>
+                        {feature}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
 
-           
+                {/* Button */}
+                <div className="relative z-10 mt-auto px-7 pb-7 pt-3 sm:px-8 sm:pb-8">
+                  <a
+                    href={getLink(plan.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group/btn flex w-full items-center justify-center gap-2 rounded-full py-3.5 text-xs font-medium transition-all duration-300 ${
+                      plan.popular
+                        ? "bg-white text-black hover:bg-blue-100"
+                        : "bg-white/[0.07] text-white hover:bg-white hover:text-black"
+                    }`}
+                  >
+                    Choose Plan
+                    <ArrowUpRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                    />
+                  </a>
+                </div>
+
+                {/* Bottom edge glow */}
+                {plan.popular && (
+                  <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-400/70 to-transparent" />
+                )}
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
 
-   
+        {/* Custom quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 flex flex-col items-center justify-center gap-4 text-center sm:flex-row"
+        >
+          <p className="text-sm text-white/40">
+            Need something beyond these packages?
+          </p>
+
+          <a
+            href={customLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 transition-colors hover:text-blue-300"
+          >
+            Let's create a custom plan
+            <ArrowUpRight size={15} />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

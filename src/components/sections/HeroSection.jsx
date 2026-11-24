@@ -81,8 +81,8 @@ const HeroSection = () => {
       </div>
 
       {/* OVERLAY */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-black/40" />
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/85 via-black/50 to-black/10" />
+      {/* <div className="pointer-events-none absolute inset-0 z-[1] bg-black/40" /> */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/85 via-black/50 to-black/05" />
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/80 via-transparent to-black/35" />
 
       

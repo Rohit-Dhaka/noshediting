@@ -7,10 +7,11 @@ import Logo from "../../assets/images/Logo.webp";
 import { FaInstagram, FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 
 const LINKS = [
-  { name: "About", href: "#about" },
-  { name: "Models", href: "#model" },
-  { name: "Videos", href: "#videos" },
-  { name: "Contact", href: "/contact" },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/#about" },
+  { name: "Videos", path: "/#videos" },
+  { name: "Services", path: "/#services" },
+  { name: "Price", path: "/#price" },
 ];
 
 const SOCIALS = [
@@ -132,7 +133,11 @@ const Footer = () => {
             </p>
 
             <a
-              href="/contact"
+              href={`https://wa.me/919253174295?text=${encodeURIComponent(
+                "Hi Nosh Infotech! I'm interested in your video editing services and would like to discuss my project.",
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group mt-4 inline-flex items-center gap-2 border-b border-white/30 pb-1 text-sm font-medium text-white transition-all duration-300 hover:border-blue-400 hover:text-blue-400"
             >
               Start a conversation

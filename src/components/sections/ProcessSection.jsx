@@ -1,5 +1,5 @@
-
-import { motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   MessageCircle,
   Upload,
@@ -7,7 +7,6 @@ import {
   RefreshCcw,
   Rocket,
   ArrowUpRight,
-  Crosshair,
   Check,
 } from "lucide-react";
 
@@ -15,43 +14,67 @@ const STEPS = [
   {
     title: "Brief & Plan",
     Icon: MessageCircle,
-    time: "DAY 0",
-    desc: "Share your vision, reference videos and target platform. We understand your goals and create a clear editing direction before starting.",
-    points: ["Goal & audience", "Reference videos", "Style & music"],
+    time: "DAY 01",
+    label: "PROJECT DISCOVERY",
+    desc: "Every great edit starts with a clear direction. We learn about your goals, audience, content style and the vision behind your project.",
+    points: ["Goal & audience", "Creative references", "Editing direction"],
   },
   {
     title: "Share Footage",
     Icon: Upload,
-    time: "DAY 0–1",
-    desc: "Send your raw footage, logo and brand assets through Google Drive or WhatsApp. We organize everything to keep the workflow smooth.",
-    points: ["Drive / WhatsApp", "Logo & brand assets", "Scripts & captions"],
+    time: "DAY 02",
+    label: "ASSET COLLECTION",
+    desc: "Share your raw clips and brand assets with us. We organize your footage, understand the story and prepare everything for editing.",
+    points: ["Raw video footage", "Logos & brand assets", "Music & references"],
   },
   {
     title: "Edit & Grade",
     Icon: Scissors,
-    time: "DAY 1–3",
-    desc: "Our editors bring your footage to life with precise cuts, smooth transitions, professional color grading and engaging motion graphics.",
-    points: ["Cuts & pacing", "Color grading", "Sound & motion"],
+    time: "DAY 03",
+    label: "CREATIVE PRODUCTION",
+    desc: "We turn your raw clips into a polished experience with purposeful cuts, smooth pacing, cinematic colors and sound that brings every frame to life.",
+    points: ["Precision editing", "Color grading", "Sound & motion"],
   },
   {
     title: "Review & Revise",
     Icon: RefreshCcw,
-    time: "DAY 3–4",
-    desc: "Review the first draft and share your feedback. We refine the details and make revisions to bring your vision to life.",
-    points: ["Frame-wise feedback", "Quick revisions", "Final approval"],
+    time: "DAY 04",
+    label: "CLIENT COLLABORATION",
+    desc: "Your feedback shapes the final result. Review the first cut, share your thoughts and we'll fine-tune the details until it feels right.",
+    points: ["Review first draft", "Feedback & revisions", "Final approval"],
   },
   {
     title: "Final Delivery",
     Icon: Rocket,
-    time: "DAY 4–5",
-    desc: "Get your final video, professionally exported and optimized for your chosen platforms. Ready to publish and make an impact.",
-    points: ["4K / HD export", "9:16, 1:1, 16:9", "Source files on request"],
+    time: "DAY 05",
+    label: "READY TO PUBLISH",
+    desc: "Your finished video is exported, optimized and delivered in the formats you need. It's time to share your story with the world.",
+    points: [
+      "HD / 4K exports",
+      "Platform-ready formats",
+      "Final video delivery",
+    ],
   },
 ];
 
-const pad = (n) => String(n).padStart(2, "0");
-
 const ProcessSection = () => {
+  const [active, setActive] = useState(2);
+  const [paused, setPaused] = useState(false);
+
+  const current = STEPS[active];
+  const { Icon } = current;
+
+  // Auto play
+  useEffect(() => {
+    if (paused) return;
+
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % STEPS.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [paused]);
+
   const whatsappLink = `https://wa.me/919253174295?text=${encodeURIComponent(
     "Hello Nosh Infotech, I want to start a video editing project.",
   )}`;
@@ -59,204 +82,182 @@ const ProcessSection = () => {
   return (
     <section
       id="process"
-      className="relative isolate overflow-x-clip bg-[#f8f8f5] py-20 text-[#171717] sm:py-28"
+      className="relative isolate overflow-hidden bg-white py-12 text-[#171717] sm:py-16"
     >
-     
-
-      {/* Decorative circles */}
-      <div className="pointer-events-none absolute left-[-100px] top-[35%] h-[250px] w-[250px] rounded-full border border-[#e8e8e2]" />
-      <div className="pointer-events-none absolute right-[-80px] bottom-[10%] h-[200px] w-[200px] rounded-full border border-[#e8e8e2]" />
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute -right-40 top-20 h-[400px] w-[400px] rounded-full bg-blue-50 blur-[120px]" />
+      <div className="pointer-events-none absolute -left-40 bottom-0 h-[350px] w-[350px] rounded-full bg-[#f4f6ff] blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1500px] px-5 sm:px-8 lg:px-16">
-
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-4xl"
-        >      
-
-          <h2 className="text-[44px] font-[Outfit] font-semibold leading-[0.98] tracking-[-0.075em] sm:text-[72px] xl:text-[96px]">
-            From raw clips
-            <br />
-            to{" "}
-            <span className="relative inline-block text-blue-600">
-              final cut
-              <motion.span
-                animate={{ rotate: [0, 90, 0] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className="absolute -right-7 top-0 text-[#171717]"
-              >
-                <ArrowUpRight size={22} strokeWidth={1.5} />
-              </motion.span>
-            </span>
-            <span className="text-[#b7b7b0]"> in 5 steps.</span>
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl"
+        >        
+          <h2 className="text-[36px] font-[Outfit] font-semibold leading-[0.95] tracking-[-0.075em] sm:text-[60px] xl:text-[76px]">
+            Creative process.                        
           </h2>
 
-          <p className="mt-6 max-w-[470px] text-sm leading-7 text-[#777771] sm:text-base">
-            A simple, transparent and creative workflow that turns your raw
-            footage into content worth watching.
+          <p className="mt-4 max-w-[440px] text-sm leading-6 text-[#777771] sm:text-base sm:leading-7">
+            From your first idea to the final export, here's how we turn raw
+            footage into something worth watching.
           </p>
         </motion.div>
 
-        {/* Process Cards */}
-        <div className="mt-16 pb-6 sm:mt-20">
-          {STEPS.map((s, i) => {
-            const { Icon } = s;
-            const isLast = i === STEPS.length - 1;
-
-            return (
-              <div
-                key={s.title}
-                className="sticky mb-6 sm:mb-10"
-                style={{ top: `${85 + i * 18}px` }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 45 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{
-                    duration: 0.7,
-                    delay: 0.05,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className={`group relative grid gap-6 overflow-hidden rounded-xl border p-6 transition-all duration-500 sm:p-10 lg:grid-cols-[auto_1.2fr_1fr] lg:items-center lg:gap-14 ${
-                    isLast
-                      ? "border-blue-600 bg-blue-600 text-white shadow-[0_20px_60px_-25px_rgba(37,99,235,0.4)]"
-                      : "border-[#e9e9e4] bg-white text-[#171717] shadow-[0_12px_40px_-25px_rgba(0,0,0,0.18)] hover:border-blue-200"
-                  }`}
-                >
-                  {/* Soft card decoration */}
-                  <div
-                    className={`pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full border ${
-                      isLast ? "border-white/10" : "border-[#f1f1ed]"
-                    }`}
-                  />
-                  <div
-                    className={`pointer-events-none absolute -right-4 -top-4 h-32 w-32 rounded-full border ${
-                      isLast ? "border-white/10" : "border-[#f1f1ed]"
-                    }`}
-                  />
-
-                  {/* Number */}
-                  <div className="relative z-10">
-                    <span
-                      className="select-none text-[72px] font-black leading-none tracking-[-0.09em] sm:text-[120px] lg:text-[150px]"
-                      style={{
-                        color: "transparent",
-                        WebkitTextStroke: isLast
-                          ? "1.5px rgba(255,255,255,0.8)"
-                          : "1.5px #2563eb",
-                      }}
-                    >
-                      {pad(i + 1)}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <p
-                      className={`font-mono text-[10px] font-medium tracking-[0.22em] ${
-                        isLast ? "text-white/65" : "text-[#aaa9a2]"
-                      }`}
-                    >
-                      STEP {pad(i + 1)} / {s.time}
-                    </p>
-
-                    <h3 className="mt-3 text-3xl font-semibold tracking-[-0.065em] sm:text-5xl">
-                      {s.title}
-                    </h3>
-
-                    <p
-                      className={`mt-4 max-w-[480px] text-sm leading-7 sm:text-[15px] ${
-                        isLast ? "text-white/80" : "text-[#85857e]"
-                      }`}
-                    >
-                      {s.desc}
-                    </p>
-                  </div>
-
-                  {/* Points */}
-                  <div className="relative z-10 flex items-start justify-between gap-5">
-                    <ul className="space-y-3">
-                      {s.points.map((p) => (
-                        <li
-                          key={p}
-                          className="flex items-center gap-3 text-sm font-medium"
-                        >
-                          <span
-                            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${
-                              isLast
-                                ? "bg-white text-blue-600"
-                                : "bg-blue-50 text-blue-600"
-                            }`}
-                          >
-                            <Check size={12} strokeWidth={3} />
-                          </span>
-                          {p}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <span
-                      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full border transition-transform duration-500 group-hover:rotate-[-12deg] sm:h-16 sm:w-16 ${
-                        isLast
-                          ? "border-white/30 bg-white/10"
-                          : "border-[#e9e9e4] bg-[#f8f8f5]"
-                      }`}
-                    >
-                      <Icon
-                        size={25}
-                        strokeWidth={1.4}
-                        className={isLast ? "text-white" : "text-blue-600"}
-                      />
-                    </span>
-                  </div>
-                </motion.div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="relative flex flex-col items-start justify-between gap-7 overflow-hidden rounded-xl border border-[#e9e9e4] bg-white p-7 shadow-[0_15px_50px_-35px_rgba(0,0,0,0.25)] sm:flex-row sm:items-center sm:p-10"
+        {/* Interactive timeline */}
+        <div
+          className="mt-10 sm:mt-12"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
         >
-          {/* CTA decoration */}
-          <div className="pointer-events-none absolute -right-10 -top-20 h-64 w-64 rounded-full border border-blue-100" />
-          <div className="pointer-events-none absolute -right-2 -top-12 h-48 w-48 rounded-full border border-blue-100" />
+          {/* Number navigation */}
+          <div className="relative">
+            <div className="absolute left-0 right-0 top-[45%] h-px bg-[#e9e9e9]" />
 
-          <div className="relative z-10">
-            <p className="text-2xl font-semibold tracking-[-0.055em] sm:text-4xl">
-              Ready to start step 01?
-            </p>
-            <p className="mt-2 text-sm leading-6 text-[#85857e]">
-              Tell us about your next creative project.
-            </p>
+            <div className="relative flex items-center justify-between gap-1 sm:gap-4">
+              {STEPS.map((step, i) => {
+                const selected = active === i;
+
+                return (
+                  <button
+                    key={step.title}
+                    onClick={() => setActive(i)}
+                    aria-label={`View step ${i + 1}: ${step.title}`}
+                    className="group relative flex flex-1 flex-col items-center outline-none"
+                  >
+                    {/* Number */}
+                    <motion.span
+                      animate={{
+                        color: selected ? "#171717" : "#d5d5d5",
+                        scale: selected ? 1 : 0.92,
+                      }}
+                      transition={{ duration: 0.4 }}
+                      className="relative z-10 select-none font-[Outfit] text-[64px] font-medium leading-none tracking-[-0.09em] sm:text-[105px] lg:text-[145px]"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </motion.span>
+
+                    {/* Active underline */}
+                    <motion.div
+                      animate={{
+                        opacity: selected ? 1 : 0,
+                        scaleX: selected ? 1 : 0.3,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="relative z-10 mt-2 h-[3px] w-8 origin-center rounded-full bg-blue-600 sm:w-14"
+                    />
+
+                    {/* Label */}
+                    <span
+                      className={`mt-2 hidden font-mono text-[9px] tracking-[0.14em] transition-colors sm:block ${
+                        selected ? "text-blue-600" : "text-[#c0c0c0]"
+                      }`}
+                    >
+                      STEP {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative z-10 inline-flex shrink-0 items-center gap-3 rounded-full bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#171717]"
-          >
-            Start on WhatsApp
-            <ArrowUpRight
-              size={17}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </a>
-        </motion.div>
+          {/* Details card */}
+          <div className="relative mt-6 overflow-hidden rounded-xl border border-[#e9e9e5] bg-[#fafaf8] p-4 sm:p-6 lg:p-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+                className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-center"
+              >
+                {/* Main content */}
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white">
+                      <Icon size={17} strokeWidth={1.7} />
+                    </span>
+
+                    <div>
+                      <p className="font-mono text-[9px] tracking-[0.17em] text-blue-600">
+                        {current.label}
+                      </p>
+
+                      <p className="mt-0.5 text-[10px] text-[#999]">
+                        {current.time}
+                      </p>
+                    </div>
+                  </div>
+
+                  <h3 className="mt-5 text-3xl font-semibold tracking-[-0.07em] sm:text-5xl lg:text-6xl">
+                    {current.title}
+                  </h3>
+
+                  <p className="mt-3 max-w-[510px] text-sm leading-6 text-[#777771] sm:text-[15px] sm:leading-7">
+                    {current.desc}
+                  </p>
+                </div>
+
+                {/* Points */}
+                <div className="relative lg:border-l lg:border-[#e5e5e0] lg:pl-8">
+                  <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-[#aaa]">
+                    WHAT HAPPENS IN THIS STEP
+                  </p>
+
+                  <div className="space-y-3">
+                    {current.points.map((point, i) => (
+                      <motion.div
+                        key={point}
+                        initial={{ opacity: 0, x: 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                          <Check size={11} strokeWidth={2.5} />
+                        </span>
+
+                        <span className="text-sm font-medium text-[#333]">
+                          {point}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Next step */}
+                  <div className="mt-6 flex items-center gap-2 border-t border-[#e5e5e0] pt-4">
+                    <span className="font-mono text-[9px] tracking-[0.14em] text-[#aaa]">
+                      NEXT
+                    </span>
+
+                    <span className="text-xs font-medium text-[#555]">
+                      {STEPS[(active + 1) % STEPS.length].title}
+                    </span>
+
+                    <ArrowUpRight size={13} className="text-blue-600" />
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Autoplay progress */}
+            {!paused && (
+              <motion.div
+                key={`progress-${active}`}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 4, ease: "linear" }}
+                className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-blue-600"
+              />
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
 };
-
 export default ProcessSection;

@@ -15,8 +15,9 @@ import Logo from "../../assets/images/Logo.webp";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/#about" },
-  { name: "Model", path: "/#model" },
   { name: "Videos", path: "/#videos" },
+  { name: "Services", path: "/#services" },
+  { name: "Price", path: "/#price" },
 ];
 
 const Navbar = () => {

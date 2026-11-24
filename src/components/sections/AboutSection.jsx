@@ -2,7 +2,6 @@
 import { useRef, useState } from "react";
 import { motion } from "motion/react";
 import { Play, Pause, ArrowUpRight, Crosshair } from "lucide-react";
-
 const VIDEOS = [
   "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795241083/bhavyasharma1.mov",
   "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795241026/fiza2.mp4",
@@ -240,29 +239,14 @@ const AboutSection = () => {
             {/* Reel wall footer */}
             <div className="mt-3 flex items-center justify-between border-t border-black/15 pt-2.5">
               <div>
-                <p className="font-mono text-[8px] tracking-[0.16em] text-black/40 sm:text-[9px]">
-                  A COLLECTION OF OUR WORK
-                </p>
+              
                 <p
                   className="mt-1 text-base font-medium tracking-tight sm:text-xl"
                   style={{ fontFamily: "Georgia, serif" }}
                 >
                   Every frame has a purpose.
                 </p>
-              </div>
-
-              <div className="flex items-center gap-2 text-blue-600">
-                <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
-                <span className="font-mono text-[8px] tracking-widest sm:text-[9px]">
-                  3 REELS
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom thin caption */}
-            <div className="mt-3 flex justify-between font-mono text-[8px] tracking-[0.12em] text-black/35">
-              <span>NOSH INFOTECH®</span>
-              <span>EDIT / CREATE / REPEAT</span>
+              </div>            
             </div>
           </motion.div>
         </div>
@@ -270,5 +254,4 @@ const AboutSection = () => {
     </section>
   );
 };
-
 export default AboutSection;
