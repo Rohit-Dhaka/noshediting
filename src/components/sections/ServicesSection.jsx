@@ -42,7 +42,7 @@ const SERVICE_VIDEOS = [
     id: "03",
     title: "VIDEO SHOOT",
     category: "PRODUCTION & FILMING",
-    src: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795505528/KRISHI_UTPAD.mp4",
+    src: "https://res.cloudinary.com/dtuwcxxxu/video/upload/v1795505508/skin_cure_kit-2.mp4",
   },
   {
     id: "04",
