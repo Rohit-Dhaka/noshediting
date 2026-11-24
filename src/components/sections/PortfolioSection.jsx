@@ -247,7 +247,7 @@ const PortfolioSection = () => {
 
       <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-blue-600/10 blur-[120px]" />
 
-      <div className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-blue-500/[0.06] blur-[120px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-blue-500/[0.06] blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16 xl:gap-20">
@@ -320,7 +320,7 @@ const PortfolioSection = () => {
                           {/* CONTENT */}
 
                           <div className="absolute inset-x-0 bottom-0 p-2 sm:p-3">
-                            <p className="line-clamp-1 text-[7px] font-medium uppercase tracking-[0.14em] text-blue-300 sm:text-[9px]">
+                            <p className="line-clamp-1 text-[10px] font-medium uppercase tracking-[0.14em] text-blue-300 sm:text-[9px]">
                               {project.category}
                             </p>
 
@@ -437,7 +437,7 @@ const PortfolioSection = () => {
                     {stat.value}
                   </p>
 
-                  <p className="mt-1 truncate text-[7px] font-medium uppercase tracking-[0.12em] text-white/40 sm:text-[9px] sm:tracking-[0.16em]">
+                  <p className="mt-1 truncate text-[10px] font-medium uppercase tracking-[0.12em] text-white/40 sm:text-[9px] sm:tracking-[0.16em]">
                     {stat.label}
                   </p>
                 </div>

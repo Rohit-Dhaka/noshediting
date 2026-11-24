@@ -209,7 +209,7 @@ const ServiceVisual = ({ service, activeIndex }) => {
                 className="h-1.5 w-1.5 rounded-full bg-blue-400"
               />
 
-              <span className="font-mono text-[7px] tracking-[0.15em] text-white/85 sm:text-[9px] sm:tracking-[0.2em]">
+              <span className="font-mono text-[10px] tracking-[0.15em] text-white/85 sm:text-[9px] sm:tracking-[0.2em]">
                 {video.category}
               </span>
             </div>
@@ -248,7 +248,7 @@ const ServiceVisual = ({ service, activeIndex }) => {
             </p>
 
             <div className="mt-1 flex items-center justify-between pt-2 sm:pt-1">
-              <span className="font-mono text-[7px] tracking-[0.15em] text-white/50 sm:text-[9px]">
+              <span className="font-mono text-[10px] tracking-[0.15em] text-white/50 sm:text-[9px]">
                 VIDEO STORYTELLING
               </span>
 
@@ -591,7 +591,7 @@ const ServicesSection = () => {
                   className="group flex min-w-6 flex-col items-center gap-1 sm:min-w-8 sm:gap-1.5"
                 >
                   <span
-                    className={`font-mono text-[7px] transition-colors sm:text-[9px] ${
+                    className={`font-mono text-[10px] transition-colors sm:text-[9px] ${
                       active === index
                         ? "font-bold text-blue-600"
                         : "text-black/35 group-hover:text-black/70"

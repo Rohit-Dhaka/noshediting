@@ -149,7 +149,7 @@ const Footer = () => {
 
         
 
-        <div className="relative mt-8 overflow-hidden sm:mt-10">
+        <div className="relative mt-8 overflow-hidden sm:mt-10 max-sm:pb-8">
           <motion.div
             initial={{ y: "35%", opacity: 0 }}
             whileInView={{ y: "0%", opacity: 1 }}

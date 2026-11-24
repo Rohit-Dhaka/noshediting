@@ -1,12 +1,14 @@
+import { lazy, Suspense } from "react";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
-import AboutSection from "../components/sections/AboutSection";
 import HeroSection from "../components/sections/HeroSection";
-import PortfolioSection from "../components/sections/PortfolioSection";
-import PricingSection from "../components/sections/PricingSection";
-import ProcessSection from "../components/sections/ProcessSection";
-import ServicesSection from "../components/sections/ServicesSection";
-import VideoGallerySection from "../components/sections/VideoGallerySection";
+
+const AboutSection = lazy(() => import("../components/sections/AboutSection"));
+const PortfolioSection = lazy(() => import("../components/sections/PortfolioSection"));
+const ServicesSection = lazy(() => import("../components/sections/ServicesSection"));
+const VideoGallerySection = lazy(() => import("../components/sections/VideoGallerySection"));
+const PricingSection = lazy(() => import("../components/sections/PricingSection"));
+const ProcessSection = lazy(() => import("../components/sections/ProcessSection"));
 
 const Home = () => {
   return (
@@ -14,12 +16,14 @@ const Home = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
-        <PortfolioSection />
-        <ServicesSection />
-        <VideoGallerySection />
-        <PricingSection />
-        <ProcessSection />
+        <Suspense fallback={null}>
+          <AboutSection />
+          <PortfolioSection />
+          <ServicesSection />
+          <VideoGallerySection />
+          <PricingSection />
+          <ProcessSection />
+        </Suspense>
       </main>
       <Footer />
     </>
