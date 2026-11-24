@@ -52,7 +52,6 @@ const SERVICE_VIDEOS = [
   },
 ];
 
-/* ================= SERVICES ================= */
 
 const SERVICES = [
   {
@@ -125,7 +124,7 @@ const SERVICES = [
   },
 ];
 
-/* ================= WHATSAPP ================= */
+
 
 const getLink = (title) =>
   `https://wa.me/919253174295?text=${encodeURIComponent(
@@ -237,9 +236,9 @@ const ServiceVisual = ({ service, activeIndex }) => {
             </div>
           </div>
 
-          {/* Bottom Typography */}
+          
           <div className="absolute bottom-0 left-0 right-0 z-20 p-3 sm:p-5 lg:p-7">
-            <h3 className="max-w-[95%] font-[Outfit] text-[clamp(1.5rem,5vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-white sm:max-w-[85%] sm:text-5xl lg:text-6xl">
+            <h3 className="max-w-[95%] font-[Outfit] text-[clamp(1.25rem,4vw,3rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-white sm:max-w-[85%] sm:text-3xl lg:text-4xl">
               {service.title}
             </h3>
 
@@ -370,8 +369,8 @@ const ServiceContent = ({ service, direction }) => {
         ))}
       </div>
 
-      {/* Mobile Controls */}
-      <div className="mt-3 flex items-center gap-2 sm:mt-5 lg:hidden">
+      
+      <div className="mt-3  max-sm:hidden flex items-center gap-2 sm:mt-5 lg:hidden">
         <span className="font-mono text-[8px] tracking-[0.12em] text-black/40">
           EXPLORE SERVICES
         </span>
@@ -485,198 +484,241 @@ const ServicesSection = () => {
 
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-blue-300/20 blur-[100px] sm:h-[450px] sm:w-[450px]" />
 
-        {/* Main Layout */}
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-col px-4 pb-2 pt-14 sm:px-6 sm:pb-5 sm:pt-20 lg:px-12 lg:pb-7 lg:pt-24 xl:px-16">
-          <div className="mt-1 grid min-h-0 flex-1 grid-cols-1 items-center gap-2 sm:mt-4 sm:gap-5 lg:mt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-16">
-            {/* LEFT CONTENT */}
-            <div className="order-2 min-h-0 lg:order-1">
-              <AnimatePresence mode="wait" custom={direction}>
-                <ServiceContent
-                  key={service.id}
-                  service={service}
-                  direction={direction}
-                />
-              </AnimatePresence>
-            </div>
+        
+    <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-col px-3 pb-2 pt-12 sm:px-6 sm:pb-5 sm:pt-16 md:px-8 md:pt-20 lg:px-12 lg:pb-7 lg:pt-24 xl:px-16">
 
-            {/* RIGHT VIDEO */}
-            <div className="relative order-1 flex w-full items-center justify-center lg:order-2">
+  <div className="mt-1 grid min-h-0 flex-1 grid-cols-1 items-center gap-3 sm:mt-4 sm:gap-5 lg:mt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-16">
 
-              {/* Reel Wrapper — Controls all positioning */}
-              <div className="relative mx-auto w-fit">
+    {/* LEFT CONTENT */}
+    <div className="order-2 min-h-0 w-full lg:order-1">
+      <AnimatePresence mode="wait" custom={direction}>
+        <ServiceContent
+          key={service.id}
+          service={service}
+          direction={direction}
+        />
+      </AnimatePresence>
+    </div>
 
-                {/* Ghost Number */}
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={service.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute -bottom-8 -right-6 z-0 select-none font-[Outfit] text-[clamp(6rem,15vw,12rem)] font-black leading-none tracking-[-0.1em] sm:-bottom-12 sm:-right-10 lg:-bottom-16 lg:-right-16 lg:text-[240px]"
-                    style={{
-                      color: "transparent",
-                      WebkitTextStroke: `1.5px ${BLUE}35`,
-                    }}
-                  >
-                    {service.id}
-                  </motion.span>
-                </AnimatePresence>
+    {/* RIGHT VIDEO */}
+    <div className="relative order-1 flex w-full min-w-0 items-center justify-center lg:order-2">
 
-                {/* Fixed Reel Card — 9:16 */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative z-10 h-[min(58svh,520px)] aspect-[9/16] shrink-0 overflow-hidden rounded-[24px] border border-blue-100 bg-[#06101f] shadow-[0_30px_100px_-35px_rgba(37,99,235,0.35)] sm:h-[min(68svh,620px)] sm:rounded-[30px] lg:h-[min(76svh,700px)]"
-                >
-                  <ServiceVisual
-                    service={service}
-                    activeIndex={active}
-                  />
-                </motion.div>
+      {/* Reel Wrapper */}
+      <div className="relative w-full min-w-0 sm:mx-auto sm:w-fit">
 
-                {/* Chapter Selector — Attached to reel */}
-                <div className="absolute -right-[46px] top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-2 lg:flex xl:-right-[54px]">
-                  {SERVICES.map((item, index) => (
-                    <button
-                      key={item.id}
-                      onClick={() => goTo(index)}
-                      aria-label={`Go to ${item.title}`}
-                      aria-current={active === index ? "step" : undefined}
-                      className="flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300"
-                      style={{
-                        borderColor:
-                          active === index
-                            ? BLUE
-                            : "rgba(37,99,235,0.12)",
-                        backgroundColor:
-                          active === index ? BLUE : "#ffffff",
-                        transform:
-                          active === index ? "scale(1.12)" : "scale(1)",
-                        boxShadow:
-                          active === index
-                            ? "0 5px 18px rgba(37,99,235,0.25)"
-                            : "none",
-                      }}
-                    >
-                      <span
-                        className="font-mono text-[8px] font-bold"
-                        style={{
-                          color:
-                            active === index
-                              ? "#ffffff"
-                              : "rgba(0,0,0,0.4)",
-                        }}
-                      >
-                        {item.id}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Ghost Number */}
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={service.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35 }}
+            className="pointer-events-none absolute -bottom-5 -right-2 z-0 select-none font-[Outfit] text-[clamp(5rem,24vw,12rem)] font-black leading-none tracking-[-0.1em] sm:-bottom-12 sm:-right-10 sm:text-[clamp(6rem,15vw,12rem)] lg:-bottom-16 lg:-right-16 lg:text-[240px]"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: `1.5px ${BLUE}35`,
+            }}
+          >
+            {service.id}
+          </motion.span>
+        </AnimatePresence>
 
-          {/* Bottom Bar */}
-          <div className="mt-2 flex w-full items-center justify-between gap-2 sm:mt-4 lg:mt-0">
-            {/* Chapter Indicators */}
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              {SERVICES.map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => goTo(index)}
-                  aria-label={`Go to ${item.title}`}
-                  aria-current={active === index ? "step" : undefined}
-                  className="group flex min-w-6 flex-col items-center gap-1 sm:min-w-8 sm:gap-1.5"
-                >
-                  <span
-                    className={`font-mono text-[10px] transition-colors sm:text-[9px] ${
-                      active === index
-                        ? "font-bold text-blue-600"
-                        : "text-black/35 group-hover:text-black/70"
-                    }`}
-                  >
-                    {item.id}
-                  </span>
+        {/* FULL WIDTH RESPONSIVE REEL */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+          className="
+            relative z-10
+            mx-auto
+            w-full
+            aspect-[9/16]
+            max-h-[48svh]
+            overflow-hidden
+            shrink-0
+            rounded-[18px]
+            border border-blue-100
+            bg-[#06101f]
+            shadow-[0_20px_60px_-25px_rgba(37,99,235,0.35)]
+            sm:w-auto
+            sm:h-[min(55svh,500px)]
+            sm:aspect-[9/16]
+            sm:max-h-none
+            sm:rounded-[24px]
+            lg:h-[min(76svh,700px)]
+            lg:rounded-[30px]
+          "
+        >
+          {/* CLICKABLE VIDEO */}
+          <button
+            type="button"
+            onClick={() => {
+              const videoElement =
+                document.querySelector("#active-service-video");
 
-                  <span
-                    className="relative h-[3px] overflow-hidden rounded-full transition-all duration-300"
-                    style={{
-                      width: active === index ? 26 : 12,
-                      backgroundColor: "rgba(37,99,235,0.15)",
-                    }}
-                  >
-                    {active === index && (
-                      <motion.span
-                        layoutId="servicesActiveBar"
-                        className="absolute inset-0 rounded-full bg-blue-600"
-                      />
-                    )}
-                  </span>
-                </button>
-              ))}
-            </div>
+              if (videoElement) {
+                if (videoElement.paused) {
+                  videoElement.play();
+                } else {
+                  videoElement.pause();
+                }
+              }
+            }}
+            aria-label="Play or pause service video"
+            className="absolute inset-0 block h-full w-full cursor-pointer"
+          >
+            <ServiceVisual
+              service={service}
+              activeIndex={active}
+            />
+          </button>
+        </motion.div>
 
-            {/* Desktop Scroll Label & Buttons */}
-            <div className="hidden items-center gap-3 sm:flex">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={service.id}
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -5 }}
-                  className="font-mono text-[8px] tracking-[0.15em] text-black/45 sm:text-[9px]"
-                >
-                  {active === SERVICES.length - 1
-                    ? "END OF SERVICES"
-                    : "SCROLL TO EXPLORE"}
-                </motion.span>
-              </AnimatePresence>
-
-              <div className="flex gap-1.5">
-                <button
-                  onClick={prevStep}
-                  disabled={active === 0}
-                  aria-label="Previous service"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-100 bg-white/70 text-blue-600 transition hover:bg-blue-50 disabled:opacity-30"
-                >
-                  <ArrowUp size={13} />
-                </button>
-
-                <button
-                  onClick={nextStep}
-                  disabled={active === SERVICES.length - 1}
-                  aria-label="Next service"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-100 bg-white/70 text-blue-600 transition hover:bg-blue-50 disabled:opacity-30"
-                >
-                  <ArrowDown size={13} />
-                </button>
-              </div>
-            </div>
-
-            {/* Mobile Step Arrows */}
-            <div className="flex gap-1 sm:hidden">
-              <button
-                onClick={prevStep}
-                disabled={active === 0}
-                aria-label="Previous service"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-blue-100 bg-white text-blue-600 disabled:opacity-30"
+        {/* CHAPTER SELECTOR - DESKTOP */}
+        <div className="absolute -right-10 top-1/2 z-30 hidden -translate-y-1/2 flex-col gap-2 lg:flex xl:-right-[54px]">
+          {SERVICES.map((item, index) => (
+            <button
+              key={item.id}
+              onClick={() => goTo(index)}
+              aria-label={`Go to ${item.title}`}
+              aria-current={active === index ? "step" : undefined}
+              className="flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300"
+              style={{
+                borderColor:
+                  active === index
+                    ? BLUE
+                    : "rgba(37,99,235,0.12)",
+                backgroundColor:
+                  active === index ? BLUE : "#ffffff",
+                transform:
+                  active === index ? "scale(1.12)" : "scale(1)",
+                boxShadow:
+                  active === index
+                    ? "0 5px 18px rgba(37,99,235,0.25)"
+                    : "none",
+              }}
+            >
+              <span
+                className="font-mono text-[8px] font-bold"
+                style={{
+                  color:
+                    active === index
+                      ? "#ffffff"
+                      : "rgba(0,0,0,0.4)",
+                }}
               >
-                <ArrowUp size={12} />
-              </button>
-
-              <button
-                onClick={nextStep}
-                disabled={active === SERVICES.length - 1}
-                aria-label="Next service"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-blue-100 bg-white text-blue-600 disabled:opacity-30"
-              >
-                <ArrowDown size={12} />
-              </button>
-            </div>
-          </div>
+                {item.id}
+              </span>
+            </button>
+          ))}
         </div>
+
+      </div>
+    </div>
+  </div>
+
+  {/* BOTTOM BAR */}
+  <div className="mt-3 flex w-full shrink-0 items-center justify-between gap-2 sm:mt-4 lg:mt-0">
+
+    {/* CHAPTER INDICATORS */}
+    <div className="flex items-center gap-1.5 sm:gap-2">
+      {SERVICES.map((item, index) => (
+        <button
+          key={item.id}
+          onClick={() => goTo(index)}
+          aria-label={`Go to ${item.title}`}
+          aria-current={active === index ? "step" : undefined}
+          className="group flex min-w-6 flex-col items-center gap-1 sm:min-w-8 sm:gap-1.5"
+        >
+          <span
+            className={`font-mono text-[10px] transition-colors sm:text-[9px] ${
+              active === index
+                ? "font-bold text-blue-600"
+                : "text-black/35 group-hover:text-black/70"
+            }`}
+          >
+            {item.id}
+          </span>
+
+          <span
+            className="relative h-[3px] overflow-hidden rounded-full transition-all duration-300"
+            style={{
+              width: active === index ? 26 : 12,
+              backgroundColor: "rgba(37,99,235,0.15)",
+            }}
+          >
+            {active === index && (
+              <motion.span
+                layoutId="servicesActiveBar"
+                className="absolute inset-0 rounded-full bg-blue-600"
+              />
+            )}
+          </span>
+        </button>
+      ))}
+    </div>
+
+    {/* DESKTOP CONTROLS */}
+    <div className="hidden items-center gap-3 sm:flex">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={service.id}
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -5 }}
+          className="font-mono text-[8px] tracking-[0.15em] text-black/45 sm:text-[9px]"
+        >
+          {active === SERVICES.length - 1
+            ? "END OF SERVICES"
+            : "SCROLL TO EXPLORE"}
+        </motion.span>
+      </AnimatePresence>
+
+      <div className="flex gap-1.5">
+        <button
+          onClick={prevStep}
+          disabled={active === 0}
+          aria-label="Previous service"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-100 bg-white/70 text-blue-600 transition hover:bg-blue-50 disabled:opacity-30"
+        >
+          <ArrowUp size={13} />
+        </button>
+
+        <button
+          onClick={nextStep}
+          disabled={active === SERVICES.length - 1}
+          aria-label="Next service"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-100 bg-white/70 text-blue-600 transition hover:bg-blue-50 disabled:opacity-30"
+        >
+          <ArrowDown size={13} />
+        </button>
+      </div>
+    </div>
+
+    {/* MOBILE CONTROLS */}
+    <div className="flex gap-1 sm:hidden">
+      <button
+        onClick={prevStep}
+        disabled={active === 0}
+        aria-label="Previous service"
+        className="flex h-7 w-7 items-center justify-center rounded-full border border-blue-100 bg-white text-blue-600 disabled:opacity-30"
+      >
+        <ArrowUp size={12} />
+      </button>
+
+      <button
+        onClick={nextStep}
+        disabled={active === SERVICES.length - 1}
+        aria-label="Next service"
+        className="flex h-7 w-7 items-center justify-center rounded-full border border-blue-100 bg-white text-blue-600 disabled:opacity-30"
+      >
+        <ArrowDown size={12} />
+      </button>
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );
@@ -1281,5 +1323,4 @@ export default ServicesSection;
 //     </section>
 //   );
 // };
-
 // export default ServicesSection;
