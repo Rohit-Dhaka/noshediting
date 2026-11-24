@@ -1,4 +1,3 @@
-
 import { useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -123,7 +122,7 @@ const SERVICES = [
 
 const getLink = (title) =>
   `https://wa.me/919253174295?text=${encodeURIComponent(
-    `Hello Nosh Infotech, I want to discuss ${title}.`
+    `Hello Nosh Infotech, I want to discuss ${title}.`,
   )}`;
 
 /* ================= ANIMATIONS ================= */
@@ -246,7 +245,7 @@ const ServiceVisual = ({ service }) => {
                   i === 0 ? "w-5 bg-blue-500" : "w-2 bg-white/30"
                 }`}
               />
-            )}
+            ))}
           </div>
         </div>
       </motion.div>
@@ -372,7 +371,10 @@ const ServiceContent = ({ service, direction }) => {
           className="group inline-flex items-center justify-center gap-1.5 rounded-full bg-blue-600 px-3 py-2 text-[8px] font-bold uppercase tracking-wide text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-[11px]"
         >
           Get this service
-          <ArrowUpRight size={12} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ArrowUpRight
+            size={12}
+            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </a>
       </div>
 
@@ -417,7 +419,7 @@ const ServicesSection = () => {
   useMotionValueEvent(scrollYProgress, "change", (value) => {
     const index = Math.min(
       SERVICES.length - 1,
-      Math.max(0, Math.floor(value * SERVICES.length))
+      Math.max(0, Math.floor(value * SERVICES.length)),
     );
 
     setActive((previous) => {
@@ -493,7 +495,6 @@ const ServicesSection = () => {
         {/* Main Layout */}
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-col px-4 pb-2 pt-14 sm:px-6 sm:pb-5 sm:pt-20 lg:px-12 lg:pb-7 lg:pt-24 xl:px-16">
           <div className="mt-1 grid min-h-0 flex-1 grid-cols-1 items-center gap-2 sm:mt-4 sm:gap-5 lg:mt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-16">
-            
             {/* LEFT CONTENT */}
             <div className="order-2 min-h-0 lg:order-1">
               <AnimatePresence mode="wait" custom={direction}>
@@ -507,7 +508,6 @@ const ServicesSection = () => {
 
             {/* RIGHT VISUAL */}
             <div className="relative order-1 mx-auto h-[clamp(175px,27svh,260px)] w-full max-w-[350px] sm:h-[38svh] sm:max-h-[380px] sm:max-w-[440px] lg:order-2 lg:h-[62svh] lg:max-h-none lg:max-w-[500px] xl:max-w-[560px]">
-              
               {/* Ghost Number */}
               <AnimatePresence mode="wait">
                 <motion.span
@@ -555,8 +555,7 @@ const ServicesSection = () => {
                     aria-current={active === index ? "step" : undefined}
                     className="flex h-7 w-7 items-center justify-center rounded-full border transition-all duration-300"
                     style={{
-                      borderColor:
-                        active === index ? BLUE : "rgba(0,0,0,0.08)",
+                      borderColor: active === index ? BLUE : "rgba(0,0,0,0.08)",
                       backgroundColor:
                         active === index ? BLUE : "rgba(255,255,255,0.8)",
                       transform: active === index ? "scale(1.15)" : "scale(1)",
@@ -578,7 +577,6 @@ const ServicesSection = () => {
 
           {/* Bottom Bar */}
           <div className="mt-2 flex w-full items-center justify-between gap-2 sm:mt-4 lg:mt-0">
-            
             {/* Chapter Indicators */}
             <div className="flex items-center gap-1.5 sm:gap-2">
               {SERVICES.map((item, index) => (
@@ -682,16 +680,6 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
-
-
-
-
-
-
-
-
-
 
 // import { useRef, useState } from "react";
 // import {
