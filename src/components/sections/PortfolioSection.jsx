@@ -384,9 +384,16 @@ const PortfolioSection = () => {
               transition={{ duration: 0.5, delay: 0.15 }}
               className="mx-auto mt-5 max-w-md text-sm leading-7 text-white/50 lg:mx-0"
             >
-              Creative visuals, cinematic edits and short-form
-              content crafted to grab attention in the first
-              second and keep it till the last.
+             From{" "}
+  <span className="text-blue-400">cinematic visuals</span> to high-impact{" "}
+  <span className="text-blue-400">reels</span>, we create premium{" "}
+  <span className="text-blue-400">video editing</span> experiences designed
+  to grab attention, build engagement, and leave a lasting impression.{" "}
+  <span className="text-white font-medium">Nosh Infotex</span> is a creative{" "}
+  <span className="text-blue-400">
+    video editing agency in India
+  </span>
+  , bringing every frame to life with precision, storytelling, and creativity.
             </motion.p>
 
             {/* CTA */}

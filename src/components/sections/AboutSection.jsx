@@ -183,17 +183,19 @@ const AboutSection = () => {
 </motion.h2>
 
             {/* Description */}
-            <motion.p
-              {...reveal}
-              className="mt-5 max-w-[460px] text-sm leading-7 text-black/55 sm:text-[15px]"
-            >
-              <Highlight>Nosh Infotech</Highlight> is a creative studio
-              turning raw footage into meaningful visuals. Through
-              <Highlight> creative editing</Highlight>,{" "}
-              <Highlight>visual storytelling</Highlight>, motion and
-              <Highlight> color grading</Highlight>, we create content
-              that captures attention and makes every second count.
-            </motion.p>
+         <motion.p
+  {...reveal}
+  className="mt-5 max-w-[460px] text-sm leading-7 text-black/55 sm:text-[15px]"
+>
+  <Highlight>Nosh Infotex</Highlight> is a creative studio and one of
+  India's leading <Highlight>video editing companies</Highlight>, turning
+  raw footage into extraordinary visuals. Through{" "}
+  <Highlight>cinematic editing</Highlight>,{" "}
+  <Highlight>visual storytelling</Highlight>, motion graphics, and{" "}
+  <Highlight>professional color grading</Highlight>, we craft high-impact
+  content that captures attention, elevates brands, and makes every
+  second count.
+</motion.p>
 
             {/* Keywords */}
             <motion.div

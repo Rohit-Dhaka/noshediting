@@ -12,21 +12,21 @@ import SEO from "../components/common/SEO";
 const Home = () => {
   return (
     <>
-    <SEO
-  title="Professional Video Editing Agency"
-  description="Nosh Infotech offers professional video editing services for Instagram Reels, YouTube videos, UGC content, brand advertisements and motion graphics."
-  path="/"
-  keywords={[
-    "video editing agency",
-    "professional video editing services",
-    "reels editing services",
-    "Instagram video editor",
-    "YouTube video editing",
-    "UGC video editing",
-    "video editing for brands",
-    "motion graphics services",
-  ]}
-/>
+      <SEO
+        title="Professional Video Editing Agency"
+        description="Nosh Infotech offers professional video editing services for Instagram Reels, YouTube videos, UGC content, brand advertisements and motion graphics."
+        path="/"
+        keywords={[
+          "video editing agency",
+          "professional video editing services",
+          "reels editing services",
+          "Instagram video editor",
+          "YouTube video editing",
+          "UGC video editing",
+          "video editing for brands",
+          "motion graphics services",
+        ]}
+      />
       <Navbar />
       <main>
         <HeroSection />

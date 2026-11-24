@@ -109,51 +109,51 @@ const ProcessSection = () => {
           <div className="relative">
             <div className="absolute left-0 right-0 top-[45%] h-px bg-[#e9e9e9]" />
 
-            <div className="relative flex items-center justify-between gap-1 sm:gap-4">
-              {STEPS.map((step, i) => {
-                const selected = active === i;
+          <div className="relative flex items-center justify-between gap-1 sm:gap-4">
+  {STEPS.map((step, i) => {
+    const selected = active === i;
 
-                return (
-                  <button
-                    key={step.title}
-                    onClick={() => setActive(i)}
-                    aria-label={`View step ${i + 1}: ${step.title}`}
-                    className="group relative flex flex-1 flex-col items-center outline-none"
-                  >
-                    {/* Number */}
-                    <motion.span
-                      animate={{
-                        color: selected ? "#171717" : "#d5d5d5",
-                        scale: selected ? 1 : 0.92,
-                      }}
-                      transition={{ duration: 0.4 }}
-                      className="relative z-10 select-none font-[Outfit] text-[64px] font-medium leading-none tracking-[-0.09em] sm:text-[105px] lg:text-[145px]"
-                    >
-                      {String(i + 1).padStart(2, "0")}
-                    </motion.span>
+    return (
+      <button
+        key={step.title}
+        onClick={() => setActive(i)}
+        aria-label={`View step ${i + 1}: ${step.title}`}
+        className="group relative flex flex-1 flex-col items-center outline-none"
+      >
+        {/* Number */}
+        <motion.span
+          animate={{
+            color: selected ? "#171717" : "#d5d5d5",
+            scale: selected ? 1 : 0.92,
+          }}
+          transition={{ duration: 0.4 }}
+          className="relative z-10 select-none font-[Outfit] text-[64px] font-medium leading-none tracking-[-0.09em] sm:text-[105px] lg:text-[145px]"
+        >
+          {i + 1}
+        </motion.span>
 
-                    {/* Active underline */}
-                    <motion.div
-                      animate={{
-                        opacity: selected ? 1 : 0,
-                        scaleX: selected ? 1 : 0.3,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="relative z-10 mt-2 h-[3px] w-8 origin-center rounded-full bg-blue-600 sm:w-14"
-                    />
+        {/* Active underline */}
+        <motion.div
+          animate={{
+            opacity: selected ? 1 : 0,
+            scaleX: selected ? 1 : 0.3,
+          }}
+          transition={{ duration: 0.3 }}
+          className="relative z-10 mt-2 h-[3px] w-8 origin-center rounded-full bg-blue-600 sm:w-14"
+        />
 
-                    {/* Label */}
-                    <span
-                      className={`mt-2 hidden font-mono text-[9px] tracking-[0.14em] transition-colors sm:block ${
-                        selected ? "text-blue-600" : "text-[#c0c0c0]"
-                      }`}
-                    >
-                      STEP {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+        {/* Label */}
+        <span
+          className={`mt-2 hidden font-mono text-[9px] tracking-[0.14em] transition-colors sm:block ${
+            selected ? "text-blue-600" : "text-[#c0c0c0]"
+          }`}
+        >
+          STEP {String(i + 1).padStart(2, "0")}
+        </span>
+      </button>
+    );
+  })}
+</div>
           </div>
 
           {/* Details card */}
