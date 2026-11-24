@@ -201,8 +201,7 @@ const ProcessSection = () => {
                     {current.desc}
                   </p>
                 </div>
-
-                {/* Points */}
+                
                 <div className="relative lg:border-l lg:border-[#e5e5e0] lg:pl-8">
                   <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-[#666666]">
                     WHAT HAPPENS IN THIS STEP

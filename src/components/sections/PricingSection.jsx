@@ -290,7 +290,7 @@ const PricingSection = () => {
                     / PER {activeTab.unit}
                   </p>
 
-                  <p className="mt-5 min-h-[42px] max-w-[270px] text-xs leading-5 text-white/45">
+                  <p className="mt-5 min-h-[42px] max-w-[270px] text-xs leading-5 text-white/70">
                     {plan.desc}
                   </p>
                 </div>

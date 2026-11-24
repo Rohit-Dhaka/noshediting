@@ -6,6 +6,9 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Hero1 from "../../assets/images/Hero1.webp";
+import Hero2 from "../../assets/images/Hero2.webp";
+import Hero3 from "../../assets/images/Hero3.webp";
 
 const slides = [
   {
@@ -14,8 +17,7 @@ const slides = [
     title: ["Every frame,", "a story worth", "watching."],
     description:
       "We transform raw footage into cinematic experiences that capture attention, emotion, and leave a lasting impression.",
-    image:
-      "https://images.pexels.com/photos/134469/pexels-photo-134469.jpeg",
+    image: Hero1,
   },
   {
     id: 2,
@@ -23,8 +25,7 @@ const slides = [
     title: ["Scroll-stopping", "content made", "to be seen."],
     description:
       "From short-form reels to engaging social content, we create videos that make people stop scrolling and start watching.",
-    image: "https://images.pexels.com/photos/7513427/pexels-photo-7513427.jpeg",
-
+    image: Hero2,
   },
   {
     id: 3,
@@ -32,8 +33,7 @@ const slides = [
     title: ["Your vision.", "Our creativity.", "One masterpiece."],
     description:
       "A perfect blend of creativity, rhythm, color, and storytelling that turns your ideas into something unforgettable.",
-    image:"https://images.pexels.com/photos/8102675/pexels-photo-8102675.jpeg",
-    
+    image: Hero3,
   },
 ];
 
@@ -85,9 +85,7 @@ const HeroSection = () => {
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/85 via-black/50 to-black/05" />
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/80 via-transparent to-black/35" />
 
-      
       <div className="relative z-[5] mx-auto flex h-full w-full max-w-[1600px] flex-col px-5 sm:px-8 lg:px-14 xl:px-20">
-        
         <div className="mt-28 flex items-center justify-between sm:mt-32">
           <AnimatePresence mode="wait">
             <motion.div
@@ -106,7 +104,7 @@ const HeroSection = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-        
+
         <div className="my-auto mb-10">
           {/* TITLE */}
           <AnimatePresence mode="wait">
@@ -174,7 +172,6 @@ const HeroSection = () => {
             className="group inline-flex w-fit items-center gap-3 rounded-full bg-white py-1.5 pl-5 pr-1.5 text-[13px] font-medium text-black transition-colors duration-300 hover:bg-blue-500 hover:text-white"
           >
             Let's talk
-
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white transition-transform duration-300 group-hover:rotate-45">
               <ArrowUpRight size={16} />
             </span>
