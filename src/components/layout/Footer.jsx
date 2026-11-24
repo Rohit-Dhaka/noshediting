@@ -105,7 +105,7 @@ const Footer = () => {
 
                       <ArrowUpRight
                         size={13}
-                        className="text-white/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-400"
+                        className="text-white/70 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-400"
                       />
                     </a>
                   </li>

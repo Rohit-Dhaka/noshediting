@@ -284,7 +284,7 @@ const PortfolioSection = () => {
                 <p className="text-2xl font-bold text-white">
                   {PROJECTS.length}+
                 </p>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">
+                <p className="text-[10px] uppercase tracking-widest text-white/70">
                   Projects
                 </p>
               </div>
@@ -293,7 +293,7 @@ const PortfolioSection = () => {
                 <p className="text-2xl font-bold text-white">
                   {CATEGORIES.length - 1}
                 </p>
-                <p className="text-[10px] uppercase tracking-widest text-white/40">
+                <p className="text-[10px] uppercase tracking-widest text-white/70">
                   Categories
                 </p>
               </div>

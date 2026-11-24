@@ -101,7 +101,7 @@ const ProcessSection = () => {
             Creative process.                        
           </h2>
 
-          <p className="mt-4 max-w-[440px] text-sm leading-6 text-[#777771] sm:text-base sm:leading-7">
+          <p className="mt-4 max-w-[440px] text-sm leading-6 text-[#666666] sm:text-base sm:leading-7">
             From your first idea to the final export, here's how we turn raw
             footage into something worth watching.
           </p>
@@ -187,7 +187,7 @@ const ProcessSection = () => {
                         {current.label}
                       </p>
 
-                      <p className="mt-0.5 text-[10px] text-[#999]">
+                      <p className="mt-0.5 text-[10px] text-[#666666]">
                         {current.time}
                       </p>
                     </div>
@@ -197,14 +197,14 @@ const ProcessSection = () => {
                     {current.title}
                   </h3>
 
-                  <p className="mt-3 max-w-[510px] text-sm leading-6 text-[#777771] sm:text-[15px] sm:leading-7">
+                  <p className="mt-3 max-w-[510px] text-sm leading-6 text-[#666666] sm:text-[15px] sm:leading-7">
                     {current.desc}
                   </p>
                 </div>
 
                 {/* Points */}
                 <div className="relative lg:border-l lg:border-[#e5e5e0] lg:pl-8">
-                  <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-[#aaa]">
+                  <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-[#666666]">
                     WHAT HAPPENS IN THIS STEP
                   </p>
 
@@ -230,7 +230,7 @@ const ProcessSection = () => {
 
                   {/* Next step */}
                   <div className="mt-6 flex items-center gap-2 border-t border-[#e5e5e0] pt-4">
-                    <span className="font-mono text-[9px] tracking-[0.14em] text-[#aaa]">
+                    <span className="font-mono text-[9px] tracking-[0.14em] text-[#666666]">
                       NEXT
                     </span>
 

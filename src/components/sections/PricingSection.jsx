@@ -187,7 +187,7 @@ const PricingSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-5 max-w-lg text-sm leading-7 text-white/40 sm:text-base"
+            className="mt-5 max-w-lg text-sm leading-7 text-white/70 sm:text-base"
           >
             Transparent packages. Thoughtful editing. Everything your content
             needs to stand out.
@@ -208,7 +208,7 @@ const PricingSection = () => {
                   key={id}
                   onClick={() => setTab(id)}
                   className={`relative flex items-center gap-2 rounded-full px-4 py-2.5 text-xs transition-colors sm:px-6 ${
-                    selected ? "text-white" : "text-white/40 hover:text-white"
+                    selected ? "text-white" : "text-white/70 hover:text-white"
                   }`}
                 >
                   {selected && (
@@ -286,7 +286,7 @@ const PricingSection = () => {
                     </span>
                   </div>
 
-                  <p className="mt-2 font-mono text-[9px] tracking-[0.15em] text-white/30">
+                  <p className="mt-2 font-mono text-[9px] tracking-[0.15em] text-white/70">
                     / PER {activeTab.unit}
                   </p>
 
@@ -300,7 +300,7 @@ const PricingSection = () => {
 
                 {/* Features */}
                 <div className="relative z-10 px-7 py-6 sm:px-8">
-                  <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-white/35">
+                  <p className="mb-5 font-mono text-[9px] tracking-[0.18em] text-white/70">
                     WHAT'S INCLUDED
                   </p>
 
@@ -366,7 +366,7 @@ const PricingSection = () => {
           transition={{ duration: 0.5 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 text-center sm:flex-row"
         >
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/70">
             Need something beyond these packages?
           </p>
 

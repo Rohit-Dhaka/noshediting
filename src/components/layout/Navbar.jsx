@@ -271,7 +271,7 @@ const Navbar = () => {
             <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
               <div className="flex items-center gap-2">
                 <Circle size={8} fill="#3b82f6" className="text-blue-500" />
-                <span className="text-[9px] uppercase tracking-[0.22em] text-white/40">
+                <span className="text-[9px] uppercase tracking-[0.22em] text-white/70">
                   The creative index
                 </span>
               </div>
@@ -369,7 +369,7 @@ const Navbar = () => {
                   <p className="text-lg font-medium text-white sm:text-xl">
                     Have a video to create?
                   </p>
-                  <p className="mt-1.5 text-xs text-white/40">
+                  <p className="mt-1.5 text-xs text-white/70">
                     Let's talk about your next project.
                   </p>
                 </div>

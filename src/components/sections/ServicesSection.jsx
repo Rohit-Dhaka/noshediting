@@ -446,7 +446,7 @@ const ServicesSection = () => {
 
                     {/* Image bottom title */}
                     <div className="absolute bottom-4 left-4 right-4">
-                      <p className="font-mono text-[9px] tracking-[0.18em] text-black/45">
+                      <p className="font-mono text-[9px] tracking-[0.18em] text-black/70">
                         NOSH INFOTECH / CREATIVE STUDIO
                       </p>
 
@@ -464,7 +464,7 @@ const ServicesSection = () => {
                         style={{ backgroundColor: service.color }}
                       />
 
-                      <span className="font-mono text-[9px] tracking-[0.13em] text-black/45">
+                      <span className="font-mono text-[9px] tracking-[0.13em] text-black/70">
                         SERVICE CHAPTER
                       </span>
                     </div>
@@ -947,7 +947,7 @@ export default ServicesSection;
 //                   <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-7">
 //                     {/* Top */}
 //                     <div className="flex items-center justify-between">
-//                       <span className="font-mono text-[8px] tracking-[0.2em] text-white/40">
+//                       <span className="font-mono text-[8px] tracking-[0.2em] text-white/70">
 //                         NOSH / CREATIVE
 //                       </span>
 //                       <span className="border border-white/15 px-2 py-1 font-mono text-[8px] text-white/50">
@@ -1005,7 +1005,7 @@ export default ServicesSection;
 //                         </span>
 //                       </h3>
 
-//                       <p className="mt-3 font-mono text-[8px] tracking-[0.13em] text-white/40">
+//                       <p className="mt-3 font-mono text-[8px] tracking-[0.13em] text-white/70">
 //                         {service.sub}
 //                       </p>
 //                     </div>
@@ -1030,7 +1030,7 @@ export default ServicesSection;
 //                         )}
 //                       </div>
 
-//                       <span className="font-mono text-[8px] tracking-widest text-white/35">
+//                       <span className="font-mono text-[8px] tracking-widest text-white/8=70">
 //                         FRAME / 001
 //                       </span>
 //                     </div>

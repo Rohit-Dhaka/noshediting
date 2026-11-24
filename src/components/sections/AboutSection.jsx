@@ -165,7 +165,7 @@ const AboutSection = () => {
               className="mb-5 flex items-center gap-2"
             >
               <Crosshair size={13} className="text-blue-600" />
-              <span className="font-mono text-[9px] tracking-[0.2em] text-black/45">
+              <span className="font-mono text-[9px] tracking-[0.2em] text-black/70">
                 CREATIVE STUDIO / 2026
               </span>
             </motion.div>
@@ -212,7 +212,7 @@ const AboutSection = () => {
               ].map((word) => (
                 <span
                   key={word}
-                  className="border border-black/10 px-2 py-1 font-mono text-[8px] tracking-[0.12em] text-black/45 transition-colors hover:border-blue-600 hover:text-blue-600"
+                  className="border border-black/10 px-2 py-1 font-mono text-[8px] tracking-[0.12em] text-black/70 transition-colors hover:border-blue-600 hover:text-blue-600"
                 >
                   {word}
                 </span>
