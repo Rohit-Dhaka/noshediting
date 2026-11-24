@@ -487,7 +487,7 @@ const ServicesSection = () => {
         
     <div className="relative z-10 mx-auto flex h-full w-full max-w-[1500px] flex-col px-3 pb-2 pt-12 sm:px-6 sm:pb-5 sm:pt-16 md:px-8 md:pt-20 lg:px-12 lg:pb-7 lg:pt-24 xl:px-16">
 
-  <div className="mt-1 grid min-h-0 flex-1 grid-cols-1 items-center gap-3 sm:mt-4 sm:gap-5 lg:mt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-16">
+  <div className="mt-1 grid min-h-0 flex-1 grid-cols-1 items-center sm:gap-3 sm:mt-4 sm:gap-5 lg:mt-0 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 xl:gap-16">
 
     {/* LEFT CONTENT */}
     <div className="order-2 min-h-0 w-full lg:order-1">
