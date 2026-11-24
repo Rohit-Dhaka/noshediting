@@ -6,6 +6,7 @@ import PortfolioSection from "../components/sections/PortfolioSection";
 import PricingSection from "../components/sections/PricingSection";
 import ProcessSection from "../components/sections/ProcessSection";
 import ServicesSection from "../components/sections/ServicesSection";
+import VideoGallerySection from "../components/sections/VideoGallerySection";
 
 const Home = () => {
   return (
@@ -15,9 +16,8 @@ const Home = () => {
         <HeroSection />
         <AboutSection />
         <PortfolioSection />
-
         <ServicesSection />
-
+        <VideoGallerySection />
         <PricingSection />
         <ProcessSection />
       </main>
