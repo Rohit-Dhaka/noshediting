@@ -86,8 +86,9 @@ const HeroSection = () => {
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/80 via-transparent to-black/35" />
 
       <div className="relative z-[5] mx-auto flex h-full w-full max-w-[1600px] flex-col px-5 sm:px-8 lg:px-14 xl:px-20">
-        <div className="mt-28 flex items-center justify-between sm:mt-32">
-          <AnimatePresence mode="wait">
+      
+        <div className="my-auto mb-4 sm:mb-10 pb-4">
+            <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.label}
               initial={{ opacity: 0, y: 12 }}
@@ -103,10 +104,8 @@ const HeroSection = () => {
               </span>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        <div className="my-auto mb-10">
           {/* TITLE */}
+
           <AnimatePresence mode="wait">
             <motion.div
               key={`title-${active}`}
@@ -114,7 +113,7 @@ const HeroSection = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="overflow-hidden"
+              className="overflow-hidden pt-4 sm:pt-8"
             >
               {currentSlide.title.map((line, index) => (
                 <div key={`${active}-${index}`} className="overflow-hidden">

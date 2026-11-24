@@ -45,7 +45,7 @@ const Footer = () => {
               <img
                 src={Logo}
                 alt="Nosh Infotech"
-                className="h-14 w-full object-cover object-center -ml-[12px]"
+                className="h-14 w-full object-cover object-center sm:-ml-[12px]"
               />
             </a>
 

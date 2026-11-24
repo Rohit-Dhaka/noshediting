@@ -225,17 +225,16 @@ const PortfolioSection = () => {
               Our Portfolio
             </motion.p>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="font-serif text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
-            >
-              Selected <span className="italic text-blue-500">Work</span>
-              <br />
-              that makes you stand out.
-            </motion.h2>
+       <motion.h2
+  initial={{ opacity: 0, y: 15 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="font-serif text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl"
+>
+  Selected <span className="italic text-blue-500">Work</span>{" "}
+  <span className="sm:block">that makes you stand out.</span>
+</motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 10 }}
@@ -249,7 +248,7 @@ const PortfolioSection = () => {
             </motion.p>
 
             {/* Category filters */}
-            <div className="mt-7 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <div className="mt-4 sm:mt-7 flex flex-wrap justify-center gap-2 lg:justify-start">
               {CATEGORIES.map((item) => (
                 <button
                   key={item}
@@ -279,7 +278,7 @@ const PortfolioSection = () => {
             </div>
 
             {/* Stats */}
-            <div className="mt-10 flex items-center justify-center gap-8 border-t border-white/10 pt-6 lg:justify-start">
+            <div className="sm:mt-10 flex items-center justify-center gap-8 sm:border-t border-white/10 pt-6 lg:justify-start">
               <div>
                 <p className="text-2xl font-bold text-white">
                   {PROJECTS.length}+

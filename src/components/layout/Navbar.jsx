@@ -126,7 +126,7 @@ const Navbar = () => {
         >
           {/* MAIN SHELL */}
           <div
-            className={`relative flex h-[76px] items-center justify-between overflow-hidden transition-all duration-500 ${
+            className={`relative flex h-[70px] sm:h-[76px] items-center justify-between overflow-hidden transition-all duration-500 ${
               isScrolled
                 ? "rounded-full border border-white/[0.10] bg-[#101010]/90 px-4 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-6"
                 : "rounded-full border border-white/[0.06] bg-[#080808]/45 px-4 backdrop-blur-md sm:px-7"
@@ -154,7 +154,7 @@ const Navbar = () => {
               src={Logo}
               alt="Logo"
               className={`w-auto object-contain transition-all duration-500 ${
-                isScrolled ? "h-18" : "h-22"
+                isScrolled ? "h-16 sm:h-18" : "h-20 sm:h-22"
               }`}
             />
           </Link>
@@ -226,7 +226,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen((prev) => !prev)}
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen}
-                className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] text-white transition-colors hover:bg-white/10 lg:hidden"
+                className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.04] text-white transition-colors hover:bg-white/10 lg:hidden"
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {isMenuOpen ? (
@@ -267,19 +267,7 @@ const Navbar = () => {
             transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#080808] px-6 pb-6 pt-28 sm:px-10 lg:hidden"
           >
-            {/* Menu top info */}
-            <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
-              <div className="flex items-center gap-2">
-                <Circle size={8} fill="#3b82f6" className="text-blue-500" />
-                <span className="text-[9px] uppercase tracking-[0.22em] text-white/70">
-                  The creative index
-                </span>
-              </div>
-
-              <span className="text-[9px] tracking-[0.15em] text-white/20">
-                2026 / NOSH
-              </span>
-            </div>
+   
 
             {/* Menu links */}
             <nav className="flex flex-col">
@@ -312,7 +300,7 @@ const Navbar = () => {
                         </span>
 
                         <span
-                          className={`text-[clamp(34px,10vw,54px)] font-medium tracking-[-0.04em] transition-colors ${
+                          className={`text-[clamp(28px,7vw,44px)] font-medium tracking-[-0.04em] transition-colors ${
                             active
                               ? "text-white"
                               : "text-white/45 group-hover:text-white"
@@ -332,62 +320,14 @@ const Navbar = () => {
                         <ArrowUpRight size={21} />
                       </span>
 
-                      {/* Hover number decoration */}
-                      <span className="pointer-events-none absolute right-10 top-1/2 -translate-y-1/2 text-[90px] font-semibold leading-none text-white/[0.025] transition-all duration-300 group-hover:text-white/[0.045]">
-                        {link.number}
-                      </span>
+                   
                     </Link>
                   </motion.div>
                 );
               })}
             </nav>
 
-            {/* Project card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
-              className="mt-auto pt-10"
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <span className="text-[9px] uppercase tracking-[0.22em] text-white/30">
-                  Next frame starts here
-                </span>
-                <span className="text-[9px] text-white/20">↘</span>
-              </div>
-
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-                className="group relative flex items-center justify-between overflow-hidden rounded-2xl border border-white/10 bg-[#111111] p-5 transition-colors duration-300 hover:border-white/20 sm:p-6"
-              >
-                <div className="absolute inset-y-0 left-0 w-1 bg-blue-500 transition-all duration-300 group-hover:w-full group-hover:opacity-[0.06]" />
-
-                <div className="relative">
-                  <p className="text-lg font-medium text-white sm:text-xl">
-                    Have a video to create?
-                  </p>
-                  <p className="mt-1.5 text-xs text-white/70">
-                    Let's talk about your next project.
-                  </p>
-                </div>
-
-                <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-black transition-all duration-300 group-hover:rotate-45 group-hover:bg-blue-500 group-hover:text-white">
-                  <ArrowUpRight size={18} />
-                </span>
-              </a>
-
-              <div className="mt-5 flex items-center justify-between">
-                <span className="text-[8px] uppercase tracking-[0.22em] text-white/20">
-                  Nosh Infotech
-                </span>
-                <span className="text-[8px] uppercase tracking-[0.22em] text-white/20">
-                  Video / Motion / Story
-                </span>
-              </div>
-            </motion.div>
+        
           </motion.div>
         )}
       </AnimatePresence>

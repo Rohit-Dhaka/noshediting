@@ -171,19 +171,16 @@ const AboutSection = () => {
             </motion.div>
 
             {/* Heading */}
-            <motion.h2
-              {...reveal}
-              className="text-[clamp(3.2rem,6.4vw,6.2rem)] font-medium leading-[0.88] tracking-[-0.075em]"
-              style={{ fontFamily: "Georgia, serif" }}
-            >
-              We make
-              <br />
-              videos feel
-              <br />
-              <span className="font-normal italic text-blue-600">
-                different.
-              </span>
-            </motion.h2>
+      <motion.h2
+  {...reveal}
+  className="text-[clamp(3.2rem,6.4vw,6.2rem)] font-medium leading-[0.88] tracking-[-0.075em]"
+  style={{ fontFamily: "Georgia, serif" }}
+>
+  We make <span className="sm:block">videos feel</span>{" "}
+  <span className="font-normal italic text-blue-600 sm:block">
+    different.
+  </span>
+</motion.h2>
 
             {/* Description */}
             <motion.p
